@@ -1,9 +1,24 @@
-#root {
+.app {
+  background-color: #fff;
+  /* padding: 32px 40px 0px; */
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: 'Inter';
+  text-align: center;
+}
+
+.app__content {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+  font-family: 'Inter';
+} */
 
 .logo {
   height: 6em;

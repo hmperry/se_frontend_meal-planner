@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  background-color: #7fff58;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  height: 50px;
+  padding: 25px 0px 25px 35px;
+}
+
+.header__user-info {
+  display: flex;
+  padding-right: 35px;
+  column-gap: 15px;
+}
+
+.header__button {
+  padding: 0 20px 0;
+  background-color: transparent;
+  border: none;
+  height: 50px;
+  font-size: 14pt;
+  font-weight: 500;
+}

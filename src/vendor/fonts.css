@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: Bold;
+  /* Replace with the appropriate font weight */
+  font-weight: 700;
+  /* Replace with the correct file path */
+  src: url('./fonts/Inter_18pt-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  /* Replace with the appropriate font weight */
+  font-weight: 500;
+  /* Replace with the correct file path */
+  src: url('./fonts/Inter_18pt-Regular.ttf') format('truetype');
+}

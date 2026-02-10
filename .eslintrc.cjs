@@ -18,4 +18,9 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
-}
+  overrides: [
+    {
+      files: ['*.js', '*.jsx'],
+    },
+  ],
+};
