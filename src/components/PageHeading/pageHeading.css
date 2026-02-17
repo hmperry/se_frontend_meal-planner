@@ -1,0 +1,10 @@
+.page__heading {
+  font-family: Inter;
+  font-size: 30pt;
+  font-weight: 500;
+  padding: 30px 0 25px 0px;
+  margin: 0;
+  width: 100%;
+  justify-content: left;
+  box-sizing: border-box;
+}

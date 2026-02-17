@@ -1,0 +1,65 @@
+.mealPlan {
+  margin: 0 auto;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1360px;
+  padding-bottom: 20px;
+}
+.mealPlan__cards {
+  padding-top: 50px;
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+.mealPlan__heading {
+  font-family: Inter;
+  font-size: 30pt;
+  font-weight: 500;
+  padding-top: 30px;
+  margin: 0;
+  width: 100%;
+  justify-content: left;
+  padding-left: 150px;
+}
+
+.mealPlan__card {
+  border: 0.75px solid #888888;
+  border-radius: 8px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.mealPlan__date-row {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 10px 15px 8px;
+  border-bottom: 0.75px solid #888888;
+  justify-content: space-between;
+}
+
+.mealPlan__day-date {
+  margin: 0;
+  padding: 0;
+  font-size: 11pt;
+}
+.mealPlan__meal-row {
+  margin: 0;
+  padding: 10px 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mealPlan__recipe {
+  margin: 0;
+  font-size: 16pt;
+}
+
+.mealPlan__icon {
+  width: 18px;
+  height: 18px;
+}

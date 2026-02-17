@@ -2,23 +2,29 @@
   display: flex;
   background-color: #7fff58;
   height: auto;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
+  max-width: 1360px;
+  padding: 25px 25px 25px 25px;
+  box-sizing: border-box;
 }
 
 .header__logo {
   height: 50px;
-  padding: 25px 0px 25px 35px;
+  padding: 10px 0px 5px 35px;
 }
 
 .header__user-info {
   display: flex;
   padding-right: 35px;
   column-gap: 15px;
+  /* right: 80px; */
+  position: relative;
 }
 
 .header__button {
-  padding: 0 20px 0;
+  padding: 0;
   background-color: transparent;
   border: none;
   height: 50px;
