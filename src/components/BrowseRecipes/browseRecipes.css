@@ -1,0 +1,19 @@
+.browse-recipes {
+  margin: 0 auto;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  width: 88%;
+  max-width: 1360px;
+  padding-bottom: 20px;
+}
+
+.browse-recipes__top-info {
+  display: flex;
+  align-items: center;
+  width: 88%;
+}
+
+.browse-recipes__search {
+  padding-right: 30px;
+}

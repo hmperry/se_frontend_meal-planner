@@ -21,7 +21,8 @@
   /* border-bottom: 0.75px solid #888; */
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  background-color: #009a00;
+  /* background-color: #009a00; */
+  background-color: #8ff365;
   display: flex;
 }
 

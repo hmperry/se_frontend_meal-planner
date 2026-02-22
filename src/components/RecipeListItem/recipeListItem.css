@@ -1,0 +1,16 @@
+.recipeList__item {
+  list-style-type: none;
+  display: flex;
+
+  border-top: 0.5px solid #888;
+  align-items: center;
+  margin: 0;
+  padding: 15px 0px 15px 5px;
+  justify-content: space-between;
+}
+
+.recipeList__title {
+  margin: 0;
+  padding-right: 25px;
+  width: max-content;
+}

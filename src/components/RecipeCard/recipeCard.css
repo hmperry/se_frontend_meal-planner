@@ -1,0 +1,86 @@
+.recipeCard__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.recipeCard__top-info {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 8px 8px 8px;
+  background-color: #a4aca4;
+  z-index: 1;
+  height: fit-content;
+}
+
+.recipeCard__tile {
+  width: 275px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.recipeCard__like {
+  color: #000;
+  /* position: absolute;
+  right: 10px;
+  top: 10px; */
+  /* border: 3px solid #004a00; */
+  /* background-color: #fff; */
+  /* border-radius: 50%; */
+  padding: 5px;
+}
+
+.recipeCard__delete {
+  color: #000;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  /* border: 3px solid #004a00; */
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.recipeCard__delete:hover ~ .recipeCard__image {
+  filter: brightness(0.5);
+}
+
+.recipeCard__heading {
+  margin: 0;
+  white-space: nowrap; /* Prevents the text from wrapping to a new line. */
+  overflow: hidden; /* Hides any content that extends beyond the container's box. */
+  text-overflow: ellipsis;
+}
+
+.recipeCard__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.recipeCards__list-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  column-gap: 15px;
+}
+
+.recipeCards__list-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* row-gap: 15px; */
+  /* column-gap: 15px; */
+  width: 88%;
+  padding: 0;
+}

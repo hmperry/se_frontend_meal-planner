@@ -3,7 +3,7 @@
   flex-direction: column;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   max-width: 1360px;
   padding-bottom: 20px;
 }
@@ -12,17 +12,6 @@
   width: 500px;
   display: block;
   margin: 0 auto;
-}
-
-.mealPlan__heading {
-  font-family: Inter;
-  font-size: 30pt;
-  font-weight: 500;
-  padding-top: 30px;
-  margin: 0;
-  width: 100%;
-  justify-content: left;
-  padding-left: 150px;
 }
 
 .mealPlan__card {

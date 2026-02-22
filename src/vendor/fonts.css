@@ -4,14 +4,14 @@
   /* Replace with the appropriate font weight */
   font-weight: 700;
   /* Replace with the correct file path */
-  src: url('./fonts/Inter_18pt-Medium.ttf') format('truetype');
+  src: url('./fonts/Inter_18pt-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   /* Replace with the appropriate font weight */
-  font-weight: 500;
+  font-weight: 400;
   /* Replace with the correct file path */
   src: url('./fonts/Inter_18pt-Regular.ttf') format('truetype');
 }

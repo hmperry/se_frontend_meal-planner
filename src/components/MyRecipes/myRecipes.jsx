@@ -1,9 +1,38 @@
 import PageHeading from '../PageHeading/pageHeading';
+import RecipeCard from '../RecipeCard/recipeCard';
+import { defaultMeals } from '../../utils/dummyData';
+import { SquarePen, CirclePlus } from 'lucide-react';
 
-function MyRecipes() {
+import './MyRecipes.css';
+
+function MyRecipes({ recipeCards, handleCardClick, closeActiveModal }) {
   return (
     <div className="my-recipes">
       <PageHeading>My Recipes</PageHeading>
+
+      <div className="my-recipes__button-set">
+        <button className="my-recipes__button personal">
+          <SquarePen className="my-recipes__button_icon " />
+          Add Personal Recipes
+        </button>
+        <button className="my-recipes__button circle">
+          <CirclePlus className="my-recipes__button_icon " />
+          Add Community Recipes
+        </button>
+      </div>
+
+      <ul className="recipeCards__list-tiles">
+        {defaultMeals.map((item) => {
+          return (
+            <RecipeCard
+              key={item._id}
+              item={item}
+              onCardClick={handleCardClick}
+              onCloseClick={closeActiveModal}
+            />
+          );
+        })}
+      </ul>
     </div>
   );
 }
