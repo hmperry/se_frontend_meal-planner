@@ -5,8 +5,8 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  max-width: 1360px;
-  padding: 25px 25px 25px 25px;
+  /* max-width: 1360px; */
+  /* padding: 25px 25px 25px 25px; */
   box-sizing: border-box;
 }
 

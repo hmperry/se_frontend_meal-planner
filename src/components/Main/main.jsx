@@ -5,17 +5,22 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import MyMealPlan from '../MyMealPlan/myMealPlan';
 import GroceryList from '../GroceryList/groceryList';
-import BrowseRecipes from '../BrowseRecipes/browseRecipes';
+import CommunityRecipes from '../CommunityRecipes/communityRecipes';
 import MyRecipes from '../MyRecipes/myRecipes';
 
-function Main({ handleCardClick, closeActiveModal }) {
+function Main({
+  handleCardClick,
+  closeActiveModal,
+  handleLikeClick,
+  likedCards,
+}) {
   return (
     <section className="main">
       <Routes>
         <Route path="/grocerylist" element={<GroceryList />}></Route>
         <Route
-          path="/browserecipes"
-          element={<BrowseRecipes handleCardClick={handleCardClick} />}
+          path="/communityrecipes"
+          element={<CommunityRecipes handleCardClick={handleCardClick} />}
         ></Route>
         <Route path="/" element={<MyMealPlan />}></Route>
         <Route
@@ -24,6 +29,8 @@ function Main({ handleCardClick, closeActiveModal }) {
             <MyRecipes
               handleCardClick={handleCardClick}
               closeActiveModal={closeActiveModal}
+              handleLikeClick={handleLikeClick}
+              likedCards={likedCards}
             />
           }
         ></Route>

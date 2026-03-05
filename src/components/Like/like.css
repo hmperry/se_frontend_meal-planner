@@ -1,0 +1,22 @@
+.like__no-like {
+  color: #000;
+  /* position: absolute;
+  right: 10px;
+  top: 10px; */
+  /* border: 3px solid #004a00; */
+  /* background-color: #fff; */
+  /* border-radius: 50%; */
+  /* padding: 5px; */
+}
+
+.like__liked {
+  color: red;
+  fill: red;
+  /* position: absolute;
+  right: 10px;
+  top: 10px; */
+  /* border: 3px solid #004a00; */
+  /* background-color: #fff; */
+  /* border-radius: 50%; */
+  /* padding: 5px; */
+}

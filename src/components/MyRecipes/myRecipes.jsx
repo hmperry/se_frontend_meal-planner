@@ -1,17 +1,32 @@
 import PageHeading from '../PageHeading/pageHeading';
-import RecipeCard from '../RecipeCard/recipeCard';
+import RecipeCard from '../RecipeCard/RecipeCard';
 import { defaultMeals } from '../../utils/dummyData';
 import { SquarePen, CirclePlus } from 'lucide-react';
 
+import { useContext } from 'react';
+
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+
 import './MyRecipes.css';
 
-function MyRecipes({ recipeCards, handleCardClick, closeActiveModal }) {
+function MyRecipes({
+  recipeCards,
+  handleCardClick,
+  closeActiveModal,
+  handleLikeClick,
+  likedCards,
+}) {
+  const { openAddRecipeModal } = useContext(CurrentUserContext);
+
   return (
     <div className="my-recipes">
       <PageHeading>My Recipes</PageHeading>
 
       <div className="my-recipes__button-set">
-        <button className="my-recipes__button personal">
+        <button
+          className="my-recipes__button personal"
+          onClick={openAddRecipeModal}
+        >
           <SquarePen className="my-recipes__button_icon " />
           Add Personal Recipes
         </button>
@@ -29,6 +44,9 @@ function MyRecipes({ recipeCards, handleCardClick, closeActiveModal }) {
               item={item}
               onCardClick={handleCardClick}
               onCloseClick={closeActiveModal}
+              onLikeClick={handleLikeClick}
+              likedCards={likedCards}
+              appPageVariant="myRecipes"
             />
           );
         })}

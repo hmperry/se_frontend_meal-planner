@@ -1,9 +1,17 @@
 import '../RecipeCard/RecipeCard.css';
 import { defaultMeals } from '../../utils/dummyData';
-import { Trash2, Heart } from 'lucide-react';
+import { Trash2, Heart, CirclePlus } from 'lucide-react';
 import { useContext, useState } from 'react';
+import Like from '../Like/like';
 
-function RecipeCard({ item, onCardClick, onCloseClick }) {
+function RecipeCard({
+  item,
+  onCardClick,
+  onCloseClick,
+  onLikeClick,
+  likedCards,
+  appPageVariant,
+}) {
   const handleClick = () => {
     onCardClick(item);
   };
@@ -18,9 +26,21 @@ function RecipeCard({ item, onCardClick, onCloseClick }) {
           >
             {item.recipe}
           </h3>
-          <Heart className="recipeCard__like" />
+          {appPageVariant === 'myRecipes' && (
+            <Like
+              className="recipeCard__like"
+              item={item}
+              likedCards={likedCards}
+              onLikeClick={onLikeClick}
+            />
+          )}
+          {appPageVariant === 'community' && (
+            <CirclePlus className="recipeCard__like" />
+          )}
         </div>
-        <Trash2 className="recipeCard__delete" />
+        {appPageVariant === 'myRecipes' ? (
+          <Trash2 className="recipeCard__delete" />
+        ) : null}
         <img
           src={item.link}
           alt=""

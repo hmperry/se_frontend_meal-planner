@@ -1,0 +1,21 @@
+.edit-meal__list {
+  max-height: 375px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.edit-meal__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 0.75px solid #888888;
+}
+.edit-meal__img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}

@@ -30,14 +30,14 @@ function Navigation() {
         </div>
       </NavLink>
       <NavLink
-        to="/browserecipes"
+        to="/communityrecipes"
         className={({ isActive }) =>
           isActive ? 'nav-link active' : 'nav-link'
         }
       >
         <div className="nav__bar_items">
           <CookingPot className="nav__icon" />
-          <p className="nav__text">Browse Recipes</p>
+          <p className="nav__text">Community Recipes</p>
         </div>
       </NavLink>
 

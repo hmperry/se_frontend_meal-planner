@@ -5,7 +5,7 @@ export const defaultMeals = [
     recipe: 'Pork Tacos',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
+
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:
@@ -18,7 +18,7 @@ export const defaultMeals = [
     recipe: 'Caesar Salad',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
+
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:
@@ -30,7 +30,7 @@ export const defaultMeals = [
     recipe: 'Chicken Stir Fry',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
+
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:
@@ -43,7 +43,6 @@ export const defaultMeals = [
     recipe: 'Grilled Salmon',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:
@@ -56,7 +55,7 @@ export const defaultMeals = [
     recipe: 'Spaghetti',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
+
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:
@@ -69,7 +68,7 @@ export const defaultMeals = [
     recipe: 'Cranberry Chicken Crockpot',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
+
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:
@@ -82,7 +81,19 @@ export const defaultMeals = [
     recipe: 'Pizza',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
-    date: '2/13/26',
+
+    instructions:
+      '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
+    ingredients:
+      '1 Lorem ipsum 2 Aliquam ultrices 3 Phasellus ultrices 4 Duis qui liqua 5 ue suscipit.',
+  },
+  {
+    _id: 7,
+    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe: 'TEST TEST',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
+
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     ingredients:

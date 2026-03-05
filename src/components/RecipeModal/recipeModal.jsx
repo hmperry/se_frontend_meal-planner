@@ -2,8 +2,15 @@ import '../RecipeModal/recipeModal.css';
 import { defaultMeals } from '../../utils/dummyData';
 
 import { Trash2, Heart, X } from 'lucide-react';
+import Like from '../Like/like';
 
-function RecipeModal({ activeModal, selectedCard, closeActiveModal }) {
+function RecipeModal({
+  activeModal,
+  selectedCard,
+  closeActiveModal,
+  handleLikeClick,
+  likedCards,
+}) {
   return (
     <div
       className={`recipeModal ${activeModal === 'preview' ? 'recipeModal__open' : ''}`}
@@ -11,7 +18,7 @@ function RecipeModal({ activeModal, selectedCard, closeActiveModal }) {
     >
       <div
         className="recipeModal__preview"
-        onMouseDown={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <button type="button" className="modal__close modal__close-preview">
           <X className="modal__close" onClick={closeActiveModal} />
@@ -19,7 +26,12 @@ function RecipeModal({ activeModal, selectedCard, closeActiveModal }) {
         <h3 className="recipeModal__heading">{selectedCard.recipe}</h3>
 
         <div className="recipeModal__top-info">
-          <Heart className="recipeModal__like" />
+          <Like
+            item={selectedCard}
+            onLikeClick={handleLikeClick}
+            likedCards={likedCards}
+          />
+          {/* <Heart className="recipeModal__like" /> */}
           <Trash2 className="recipeModal__delete" />
         </div>
 

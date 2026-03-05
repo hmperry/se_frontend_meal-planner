@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 import PageHeading from '../PageHeading/pageHeading';
-import RecipeCard from '../RecipeCard/recipeCard';
+import RecipeCard from '../RecipeCard/RecipeCard';
 import SearchForm from '../SearchForm/searchForm';
 import { defaultMeals } from '../../utils/dummyData';
 
-import './browseRecipes.css';
+import './communityRecipes.css';
 import RecipeListItem from '../RecipeListItem/recipeListItem';
 import ViewToggle from '../ViewToggle/viewToggle';
 
-function BrowseRecipes() {
+function CommunityRecipes({ handleCardClick }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewType, setViewType] = useState('cards');
 
@@ -18,13 +18,13 @@ function BrowseRecipes() {
   );
 
   return (
-    <div className="browse-recipes">
-      <PageHeading>Browse Recipes</PageHeading>
-      <div className="browse-recipes__top-info">
+    <div className="community-recipes">
+      <PageHeading>Community Recipes</PageHeading>
+      <div className="community-recipes__top-info">
         <SearchForm
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
-          className="browse-recipes__search"
+          className="community-recipes__search"
         />
         {/* <div className="searchForm">
           { <input
@@ -41,7 +41,14 @@ function BrowseRecipes() {
       {viewType === 'cards' ? (
         <ul className="recipeCards__list-tiles">
           {filteredRecipes.map((item) => {
-            return <RecipeCard key={item._id} item={item} />;
+            return (
+              <RecipeCard
+                key={item._id}
+                item={item}
+                onCardClick={handleCardClick}
+                appPageVariant="community"
+              />
+            );
           })}
         </ul>
       ) : (
@@ -55,4 +62,4 @@ function BrowseRecipes() {
   );
 }
 
-export default BrowseRecipes;
+export default CommunityRecipes;

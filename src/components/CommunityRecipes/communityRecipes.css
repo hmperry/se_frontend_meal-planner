@@ -1,4 +1,4 @@
-.browse-recipes {
+.community-recipes {
   margin: 0 auto;
   flex-direction: column;
   display: flex;
@@ -8,12 +8,12 @@
   padding-bottom: 20px;
 }
 
-.browse-recipes__top-info {
+.community-recipes__top-info {
   display: flex;
   align-items: center;
   width: 88%;
 }
 
-.browse-recipes__search {
+.community-recipes__search {
   padding-right: 30px;
 }
