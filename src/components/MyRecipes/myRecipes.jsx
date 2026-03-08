@@ -16,7 +16,7 @@ function MyRecipes({
   handleLikeClick,
   likedCards,
 }) {
-  const { openAddRecipeModal } = useContext(CurrentUserContext);
+  const { openAddRecipeModal, myRecipes } = useContext(CurrentUserContext);
 
   return (
     <div className="my-recipes">
@@ -30,14 +30,14 @@ function MyRecipes({
           <SquarePen className="my-recipes__button_icon " />
           Add Personal Recipes
         </button>
-        <button className="my-recipes__button circle">
+        {/* <button className="my-recipes__button circle">
           <CirclePlus className="my-recipes__button_icon " />
           Add Community Recipes
-        </button>
+        </button> */}
       </div>
 
       <ul className="recipeCards__list-tiles">
-        {defaultMeals.map((item) => {
+        {myRecipes.map((item) => {
           return (
             <RecipeCard
               key={item._id}

@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background-color: #8ff365;
+  background-color: #009a00;
   height: auto;
   width: 100%;
   justify-content: space-between;
@@ -12,7 +12,8 @@
 
 .header__logo {
   height: 50px;
-  padding: 10px 0px 5px 35px;
+  padding: 10px 0px 15px 35px;
+  color: #fff;
 }
 
 .header__user-info {
@@ -30,4 +31,24 @@
   height: 50px;
   font-size: 14pt;
   font-weight: 500;
+  color: #fff;
+}
+
+.header__menu {
+  display: none;
+  background-color: transparent;
+  border: none;
+  height: 65px;
+  color: #fff;
+  padding: 0 15px 0 0;
+}
+
+@media screen and (max-width: 750px) {
+  .header__user-info {
+    display: none;
+  }
+  .header__menu {
+    visibility: visible;
+    display: block;
+  }
 }

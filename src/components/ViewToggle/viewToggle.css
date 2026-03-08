@@ -3,3 +3,26 @@
   gap: 8px;
   display: flex;
 }
+
+.view-toggle__btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #888888;
+}
+
+.view-toggle__btn_active {
+  border: none;
+  background-color: rgba(136, 136, 136, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #009a00;
+  border: 1px solid #009a00;
+}

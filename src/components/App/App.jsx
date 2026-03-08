@@ -13,6 +13,8 @@ import RecipeModal from '../RecipeModal/recipeModal';
 import AddRecipeModal from '../AddRecipeModal/AddRecipeModal';
 import EditMealPlanModal from '../EditMealPlanModal/editMealPlan';
 
+import { getRecipes } from '../../utils/FatSecretAPI.js';
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -21,6 +23,18 @@ function App() {
   const [likedCards, setLikedCards] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
   const [mealPlanDays, setMealPlanDays] = useState([]);
+
+  //For saving recipes to My Recipes
+  const [myRecipes, setMyRecipes] = useState([]);
+
+  const addToMyRecipes = (recipe) => {
+    if (myRecipes.some((r) => r.recipe_id === recipe.recipe_id)) return;
+    setMyRecipes((prev) => [...prev, recipe]);
+  };
+
+  //For community recipes page
+  const [communitySearchQuery, setCommunitySearchQuery] = useState('');
+  const [communityRecipes, setCommunityRecipes] = useState([]); // ✅ API results
 
   const handleCardClick = (card) => {
     setActiveModal('preview');
@@ -87,6 +101,12 @@ function App() {
         mealPlanDays,
         setMealPlanDays,
         updateMealPlanDay,
+        communitySearchQuery,
+        setCommunitySearchQuery,
+        communityRecipes,
+        setCommunityRecipes,
+        myRecipes,
+        addToMyRecipes,
       }}
     >
       <div className="app">

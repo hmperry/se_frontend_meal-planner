@@ -11,9 +11,38 @@
 .community-recipes__top-info {
   display: flex;
   align-items: center;
-  width: 88%;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
 }
 
 .community-recipes__search {
   padding-right: 30px;
+}
+
+.community-recipes__preloader {
+  padding-top: 200px;
+}
+
+.community-recipes__search-input {
+  border-radius: 5px;
+  width: 100%;
+  height: 25px;
+  padding: 3px 3px 3px 10px;
+  /* border: 0.5px solid; */
+}
+
+@media screen and (max-width: 550px) {
+  .community-recipes__top-info {
+    width: 100%; /* ✅ full width on small screens */
+  }
+
+  .recipeCards__list-tiles {
+    width: 100%;
+    column-gap: 0;
+  }
+
+  .recipeCard__container {
+    width: 100%;
+  }
 }

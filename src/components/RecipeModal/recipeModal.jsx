@@ -1,5 +1,4 @@
 import '../RecipeModal/recipeModal.css';
-import { defaultMeals } from '../../utils/dummyData';
 
 import { Trash2, Heart, X } from 'lucide-react';
 import Like from '../Like/like';
@@ -23,7 +22,7 @@ function RecipeModal({
         <button type="button" className="modal__close modal__close-preview">
           <X className="modal__close" onClick={closeActiveModal} />
         </button>
-        <h3 className="recipeModal__heading">{selectedCard.recipe}</h3>
+        <h3 className="recipeModal__heading">{selectedCard.recipe_name}</h3>
 
         <div className="recipeModal__top-info">
           <Like
@@ -39,7 +38,7 @@ function RecipeModal({
           <div className="recipeModal__left-col">
             <div className="recipeModal__img-container">
               <img
-                src={selectedCard.link}
+                src={selectedCard.recipe_image}
                 alt=""
                 className="recipeModal__image"
               />
@@ -54,7 +53,7 @@ function RecipeModal({
           <div className="recipeModal__text-info">
             <h4 className="recipeModal__subhead">Description</h4>
             <p className="recipeModal__description">
-              {selectedCard.description}
+              {selectedCard.recipe_description}
             </p>
             <h4 className="recipeModal__subhead">Instructions</h4>
             <div className="recipeModal__instructions">

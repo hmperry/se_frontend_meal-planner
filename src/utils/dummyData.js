@@ -1,9 +1,10 @@
 export const defaultMeals = [
   {
     _id: 0,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'Pork Tacos',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'Pork Tacos',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
     instructions:
@@ -14,8 +15,9 @@ export const defaultMeals = [
 
   {
     _id: 1,
-    link: 'https://cdn.loveandlemons.com/wp-content/uploads/2024/12/caesar-salad-recipe-580x783.jpg',
-    recipe: 'Caesar Salad',
+    recipe_image:
+      'https://cdn.loveandlemons.com/wp-content/uploads/2024/12/caesar-salad-recipe-580x783.jpg',
+    recipe_name: 'Caesar Salad',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
@@ -26,9 +28,10 @@ export const defaultMeals = [
   },
   {
     _id: 2,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'Chicken Stir Fry',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'Chicken Stir Fry',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
     instructions:
@@ -39,9 +42,10 @@ export const defaultMeals = [
 
   {
     _id: 3,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'Grilled Salmon',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'Grilled Salmon',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
     instructions:
       '1.Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2. Aliquam ultrices leo in turpis posuere euismod. 3. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. 4. Duis quis justo posuere, congue felis nec, volutpat lacus. 5. Aliquam finibus mauris a facilisis semper. 6. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. 7. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
@@ -51,9 +55,10 @@ export const defaultMeals = [
 
   {
     _id: 4,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'Spaghetti',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'Spaghetti',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
     instructions:
@@ -64,9 +69,10 @@ export const defaultMeals = [
 
   {
     _id: 5,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'Cranberry Chicken Crockpot',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'Cranberry Chicken Crockpot',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
     instructions:
@@ -77,9 +83,10 @@ export const defaultMeals = [
 
   {
     _id: 6,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'Pizza',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'Pizza',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
     instructions:
@@ -89,9 +96,10 @@ export const defaultMeals = [
   },
   {
     _id: 7,
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
-    recipe: 'TEST TEST',
-    description:
+    recipe_image:
+      'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591',
+    recipe_name: 'TEST TEST',
+    recipe_description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices leo in turpis posuere euismod. Phasellus ultrices tellus vel massa blandit, id vulputate lorem sagittis. Duis quis justo posuere, congue felis nec, volutpat lacus. Aliquam finibus mauris a facilisis semper. Mauris et diam ut dolor condimentum pellentesque eu a ligula. Sed vestibulum fringilla justo, sit amet suscipit odio interdum nec. Nam id sollicitudin urna, at dapibus ex. Ut vel elementum orci. Donec eu ante ac diam congue suscipit.',
 
     instructions:

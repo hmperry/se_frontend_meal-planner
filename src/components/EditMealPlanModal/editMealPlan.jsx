@@ -15,16 +15,16 @@ function EditMealPlanModal({ isOpen, closeActiveModal }) {
   const [search, setSearch] = useState('');
 
   const filtered = defaultMeals.filter((r) =>
-    r.recipe.toLowerCase().includes(search.toLowerCase())
+    r.recipe_name.toLowerCase().includes(search.toLowerCase())
   );
 
   const handleSelect = (recipe) => {
     // ✅ update the selected day's meal
     updateMealPlanDay({
       ...selectedDay,
-      recipe: recipe.recipe,
-      link: recipe.link,
-      description: recipe.description,
+      recipe: recipe.recipe_name,
+      link: recipe.recipe_image,
+      description: recipe.recipe_description,
       instructions: recipe.instructions,
       ingredients: recipe.ingredients,
     });

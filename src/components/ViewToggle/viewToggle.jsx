@@ -6,7 +6,9 @@ function ViewToggle({ viewType, onViewChange }) {
     <div className="view-toggle">
       <button
         className={
-          viewType === 'cards' ? 'view-toggle__btn active' : 'view-toggle__btn'
+          viewType === 'cards'
+            ? 'view-toggle__btn view-toggle__btn_active'
+            : 'view-toggle__btn'
         }
         onClick={() => onViewChange('cards')}
       >
@@ -14,7 +16,9 @@ function ViewToggle({ viewType, onViewChange }) {
       </button>
       <button
         className={
-          viewType === 'list' ? 'view-toggle__btn active' : 'view-toggle__btn'
+          viewType === 'list'
+            ? 'view-toggle__btn view-toggle__btn_active'
+            : 'view-toggle__btn'
         }
         onClick={() => onViewChange('list')}
       >

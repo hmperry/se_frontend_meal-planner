@@ -1,6 +1,6 @@
 import './Header.css';
-import logo from '../../images/logo.svg';
-import { User } from 'lucide-react';
+import logo from '../../images/logo2_white.svg';
+import { User, SquareMenu } from 'lucide-react';
 
 function Header() {
   return (
@@ -13,12 +13,19 @@ function Header() {
 
       <div className="header__user-info">
         <button className="header__button" type="button">
-          MY PROFILE
+          My Profile
         </button>
         <button className="header__button" type="button">
-          SIGN OUT
+          Sign Out
         </button>
       </div>
+      <button
+        className="header__menu"
+        type="button"
+        // onClick={handleMenuClick}
+      >
+        <SquareMenu size={30} />
+      </button>
     </header>
   );
 }

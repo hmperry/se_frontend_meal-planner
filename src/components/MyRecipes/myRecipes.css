@@ -11,7 +11,7 @@
 .my-recipes__button {
   display: flex;
   align-items: center;
-  width: 75%;
+  width: 275px;
   border: 0;
   border-radius: 8px;
   height: 45px;
@@ -21,6 +21,7 @@
 
 .my-recipes__button_icon {
   padding-right: 15px;
+  cursor: pointer;
 }
 
 .circle {
@@ -34,9 +35,11 @@
 
 .my-recipes__button-set {
   display: flex;
-  width: 100%;
+
   margin: 0 auto;
   justify-content: center;
   gap: 15px;
   flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
 }
