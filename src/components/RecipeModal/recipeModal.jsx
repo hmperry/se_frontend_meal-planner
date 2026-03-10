@@ -43,10 +43,15 @@ function RecipeModal({
                 className="recipeModal__image"
               />
             </div>
+            <h4 className="recipeModal__subhead">Ingredients</h4>
             <div className="recipeModal__ingredients">
-              {selectedCard.ingredients?.split(/(?=\d+)/).map((step, index) => (
-                <p key={index}>{step.trim()}</p>
-              ))}
+              {Array.isArray(selectedCard.ingredients?.ingredient)
+                ? selectedCard.ingredients.ingredient.map(
+                    (ingredient, index) => (
+                      <p key={index}>{ingredient.ingredient_description}</p>
+                    )
+                  )
+                : null}
             </div>
           </div>
 
@@ -57,11 +62,13 @@ function RecipeModal({
             </p>
             <h4 className="recipeModal__subhead">Instructions</h4>
             <div className="recipeModal__instructions">
-              {selectedCard.instructions
-                ?.split(/(?=\d+\.)/)
-                .map((step, index) => (
-                  <p key={index}>{step.trim()}</p>
-                ))}
+              {Array.isArray(selectedCard.directions?.direction) ? (
+                selectedCard.directions.direction.map((step, index) => (
+                  <p key={index}>{step.direction_description}</p>
+                ))
+              ) : selectedCard.directions?.direction ? (
+                <p>{selectedCard.directions.direction.direction_description}</p>
+              ) : null}
             </div>
           </div>
         </div>

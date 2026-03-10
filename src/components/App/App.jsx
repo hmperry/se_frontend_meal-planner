@@ -13,7 +13,7 @@ import RecipeModal from '../RecipeModal/recipeModal';
 import AddRecipeModal from '../AddRecipeModal/AddRecipeModal';
 import EditMealPlanModal from '../EditMealPlanModal/editMealPlan';
 
-import { getRecipes } from '../../utils/FatSecretAPI.js';
+import { getRecipeDetails, getRecipes } from '../../utils/FatSecretAPI.js';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,8 +37,20 @@ function App() {
   const [communityRecipes, setCommunityRecipes] = useState([]); // ✅ API results
 
   const handleCardClick = (card) => {
-    setActiveModal('preview');
-    setSelectedCard(card);
+    console.log('card clicked:', card);
+    getRecipeDetails(card.recipe_id)
+      .then((data) => {
+        const fullCard = {
+          ...card,
+          ...data.recipe,
+        };
+        setSelectedCard(fullCard);
+        setActiveModal('preview');
+        // setSelectedCard(card);
+      })
+      .catch((err) => {
+        console.error('Error fetching recipe details:', err);
+      });
   };
 
   const closeActiveModal = () => {

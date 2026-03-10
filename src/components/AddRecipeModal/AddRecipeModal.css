@@ -53,3 +53,47 @@
   overflow-y: auto; /* ✅ enables scrolling */
   max-height: 90vh;
 }
+
+.addRecipe__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.addRecipe__remove {
+  cursor: pointer;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.addRecipe__remove:hover {
+  color: #e53935;
+}
+
+.addRecipe__add-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #555;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.addRecipe__add-button:hover {
+  border-color: #8ff365;
+  color: #009a00;
+}
+
+.addRecipeModal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto; /* ✅ enables scrolling */
+}
