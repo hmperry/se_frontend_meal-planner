@@ -33,14 +33,14 @@ function RecipeCard({
           >
             {item.recipe_name}
           </h3>
-          {appPageVariant === 'myRecipes' && (
+          {/* {appPageVariant === 'myRecipes' && (
             <Like
               className="recipeCard__top-icon"
               item={item}
               likedCards={likedCards}
               onLikeClick={onLikeClick}
             />
-          )}
+          )} */}
           {appPageVariant === 'community' &&
             (isAdded ? (
               <CircleCheck className="recipeCard__top-icon recipeCard__added" />
@@ -83,7 +83,13 @@ function RecipeCard({
             }}
           />
         ) : null}
-        <img src={item.recipe_image} alt="" className="recipeCard__image" />
+        {item.recipe_image ? (
+          <img src={item.recipe_image} alt="" className="recipeCard__image" />
+        ) : (
+          <div className="recipeCard__no-image">
+            <p className="recipeCard__no-image-text">Photo not available</p>
+          </div>
+        )}
       </div>
     </li>
   );

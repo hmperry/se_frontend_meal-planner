@@ -144,7 +144,7 @@ function CommunityRecipes({ handleCardClick }) {
           className="community-recipes__search"
         />
 
-        <ViewToggle viewType={viewType} onViewChange={setViewType} />
+        {/* <ViewToggle viewType={viewType} onViewChange={setViewType} /> */}
       </div>
 
       {error && <p className="community-recipes__status">{error}</p>}

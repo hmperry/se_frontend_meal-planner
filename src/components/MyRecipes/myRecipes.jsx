@@ -38,12 +38,12 @@ function MyRecipes({
         {myRecipes.map((item) => {
           return (
             <RecipeCard
-              key={item._id}
+              key={item._id || item.recipe_id}
               item={item}
               onCardClick={handleCardClick}
               onCloseClick={closeActiveModal}
-              onLikeClick={handleLikeClick}
-              likedCards={likedCards}
+              // onLikeClick={handleLikeClick}
+              // likedCards={likedCards}
               appPageVariant="myRecipes"
             />
           );

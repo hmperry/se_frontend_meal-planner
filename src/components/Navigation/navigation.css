@@ -52,8 +52,13 @@
 
 @media screen and (max-width: 750px) {
   .nav__title {
-    display: none;
+    text-align: center;
   }
+
+  .nav__item {
+    flex-direction: column;
+  }
+
   .nav__bar {
     justify-content: space-between;
     padding: 0 40px;
@@ -62,6 +67,19 @@
     height: 32px;
     width: 32px;
     padding-right: 0px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .nav__icon svg {
+    height: 28px;
+    width: 28px;
+    padding-right: 0px;
+  }
+  .nav__title {
+    font-size: 10pt;
+    font-weight: 600;
+    /* flex: 70%; */
   }
 }
 

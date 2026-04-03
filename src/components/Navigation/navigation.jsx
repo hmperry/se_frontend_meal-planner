@@ -15,14 +15,8 @@ import { List, CookingPot, WalletCards, Calendar } from 'lucide-react';
 function Navigation() {
   const location = useLocation();
 
-  const pageTitles = {
-    '/': 'My Meal Plan',
-    '/grocerylist': 'Grocery List',
-    '/communityrecipes': 'Community Recipes',
-    '/myrecipes': 'My Recipes',
-  };
-
-  const currentTitle = pageTitles[location.pathname] || '';
+  const currentTitle =
+    NavData.find((val) => val.link === location.pathname)?.title || '';
   return (
     <div className="Navigation">
       <ul className="nav__bar">

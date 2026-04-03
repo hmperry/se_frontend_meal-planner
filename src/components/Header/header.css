@@ -11,7 +11,7 @@
 }
 
 .header__logo {
-  height: 50px;
+  height: 45px;
   padding: 10px 0px 15px 35px;
   color: #fff;
 }
@@ -50,5 +50,12 @@
   .header__menu {
     visibility: visible;
     display: block;
+    padding: 0 40px 0 0;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .header__logo {
+    height: 30px;
   }
 }

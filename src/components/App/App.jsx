@@ -33,7 +33,14 @@ function App() {
   // console.log('savedPlans:', savedPlans);
 
   //For saving recipes to My Recipes
-  const [myRecipes, setMyRecipes] = useState([]);
+  const [myRecipes, setMyRecipes] = useState(() => {
+    const stored = localStorage.getItem('myRecipes');
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('myRecipes', JSON.stringify(myRecipes));
+  }, [myRecipes]);
 
   const addToMyRecipes = (recipe) => {
     if (myRecipes.some((r) => r.recipe_id === recipe.recipe_id)) return;
