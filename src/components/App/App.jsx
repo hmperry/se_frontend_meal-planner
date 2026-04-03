@@ -12,8 +12,10 @@ import Footer from '../Footer/footer';
 import RecipeModal from '../RecipeModal/recipeModal';
 import AddRecipeModal from '../AddRecipeModal/AddRecipeModal';
 import EditMealPlanModal from '../EditMealPlanModal/editMealPlan';
+import EditGroceryModal from '../GroceryList/editGroceryModal';
 
 import { getRecipeDetails, getRecipes } from '../../utils/FatSecretAPI.js';
+import { Edit } from 'lucide-react';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +25,12 @@ function App() {
   const [likedCards, setLikedCards] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
   const [mealPlanDays, setMealPlanDays] = useState([]);
+  //Saved plans: [{ id, name, startDate, endDate, days}]
+  const [savedPlans, setSavedPlans] = useState(() => {
+    const stored = localStorage.getItem('savedMealPlans');
+    return stored ? JSON.parse(stored) : [];
+  });
+  // console.log('savedPlans:', savedPlans);
 
   //For saving recipes to My Recipes
   const [myRecipes, setMyRecipes] = useState([]);
@@ -32,12 +40,20 @@ function App() {
     setMyRecipes((prev) => [...prev, recipe]);
   };
 
+  //For deleting recipes from My Recipes
+  const deleteFromMyRecipes = (recipe) => {
+    setMyRecipes((prev) =>
+      prev.filter((r) => r.recipe_id !== recipe.recipe_id)
+    );
+  };
+
   //For community recipes page
   const [communitySearchQuery, setCommunitySearchQuery] = useState('');
   const [communityRecipes, setCommunityRecipes] = useState([]); // ✅ API results
 
   const handleCardClick = (card) => {
     console.log('card clicked:', card);
+    console.log('recipe_image:', card.recipe_image);
     getRecipeDetails(card.recipe_id)
       .then((data) => {
         const fullCard = {
@@ -92,6 +108,12 @@ function App() {
     setActiveModal('editMealPlanModal');
   };
 
+  //Open Edit Grocery Modal
+  const openEditGroceryModal = () => {
+    console.log('Open Edit Grocery Modal');
+    setActiveModal('editGroceryModal');
+  };
+
   //handleMealPlan Days
   const updateMealPlanDay = (updatedDay) => {
     setMealPlanDays((prev) =>
@@ -119,6 +141,10 @@ function App() {
         setCommunityRecipes,
         myRecipes,
         addToMyRecipes,
+        openEditGroceryModal,
+        deleteFromMyRecipes,
+        savedPlans,
+        setSavedPlans,
       }}
     >
       <div className="app">
@@ -148,6 +174,10 @@ function App() {
         />
         <EditMealPlanModal
           isOpen={activeModal === 'editMealPlanModal'}
+          closeActiveModal={closeActiveModal}
+        />
+        <EditGroceryModal
+          isOpen={activeModal === 'editGroceryModal'}
           closeActiveModal={closeActiveModal}
         />
       </div>

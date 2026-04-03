@@ -15,6 +15,11 @@ export const getRecipes = (query, page = 0) => {
   );
 };
 
+// Pull dinner recipe types for initial display in community recipes
+export const getDinners = (page = 0) => {
+  return request(`${BASE_URL}/recipes/dinner?page=${page}`);
+};
+
 // ✅ get recipe details
 export const getRecipeDetails = (id) => {
   return request(`${BASE_URL}/recipes/${id}`);

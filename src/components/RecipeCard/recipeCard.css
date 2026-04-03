@@ -82,6 +82,7 @@
 .recipeCard__image {
   width: 100%;
   object-fit: cover;
+  overflow: hidden;
 }
 
 .recipeCards__list-tiles {
@@ -132,6 +133,18 @@
   animation: popIn 0.3s ease; /* ✅ pop animation when it appears */
 }
 
+.recipeCard__tooltip {
+  position: fixed;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 9999;
+}
 @keyframes popIn {
   0% {
     transform: scale(0);

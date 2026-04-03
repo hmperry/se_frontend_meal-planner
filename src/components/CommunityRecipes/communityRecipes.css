@@ -32,6 +32,24 @@
   /* border: 0.5px solid; */
 }
 
+.community-recipes__load-more {
+  margin: 24px auto;
+  display: block;
+  padding: 10px 28px;
+  background: #009a00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.community-recipes__load-more:hover {
+  background: #007500;
+}
+
 @media screen and (max-width: 550px) {
   .community-recipes__top-info {
     width: 100%; /* ✅ full width on small screens */

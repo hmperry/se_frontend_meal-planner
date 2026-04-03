@@ -1,15 +1,31 @@
+.mealPlan__layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
 .mealPlan {
   margin: 0 auto;
-  flex-direction: column;
+  /* flex-direction: column; */
   display: flex;
   align-items: center;
   width: 80%;
+  flex: 1;
+  min-width: 0;
   max-width: 1360px;
   padding-bottom: 20px;
 }
+
+.mealPlan__wrapper {
+  width: 70%;
+  position: relative;
+}
 .mealPlan__cards {
-  padding-top: 50px;
-  width: 500px;
+  padding-top: 0px;
+  width: 70%;
+  min-width: 357px;
   display: block;
   margin: 0 auto;
 }
@@ -51,6 +67,13 @@
 .mealPlan__icon {
   width: 18px;
   height: 18px;
+  cursor: pointer;
+}
+
+.mealPlan__edit-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .mealPlan__expanded_top-info {
@@ -149,7 +172,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px;
+  padding: 25px 0;
   flex-wrap: wrap;
 }
 
@@ -182,4 +205,212 @@
   text-align: center;
   color: #888;
   padding: 32px;
+}
+
+/* Sidebar */
+.mealPlan__sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px; /* sticks while page scrolls */
+  align-self: flex-start;
+  background: #f9f9f9; /* adjust to your theme */
+  border-left: 1px solid #e0e0e0;
+  padding: 24px 16px;
+  min-height: 200px;
+}
+
+.mealPlan__sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.mealPlan__sidebar-empty {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.5;
+}
+
+.mealPlan__save-bar {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+}
+
+.mealPlan__save-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: #2e7d32; /* adjust to match your brand */
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+
+.mealPlan__save-button:hover {
+  background: #1b5e20;
+  transform: translateY(-1px);
+}
+
+.mealPlan__save-button.saved {
+  background: #1b5e20;
+  transition: background 0.3s;
+}
+/* ─────────────────────────────────────────
+   SAVED PLAN LIST
+───────────────────────────────────────── */
+.mealPlan__sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mealPlan__sidebar-item {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.15s;
+}
+
+.mealPlan__sidebar-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mealPlan__sidebar-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.mealPlan__sidebar-link:hover {
+  background: #f1f8f1;
+}
+
+.mealPlan__sidebar-plan-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.mealPlan__sidebar-plan-range {
+  /* font-size: 0.75rem;
+  color: #2e7d32;
+  font-weight: 500; */
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.mealPlan__sidebar-plan-count {
+  font-size: 0.72rem;
+  color: #888;
+}
+
+.mealPlan__sidebar-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-left: 1px solid #e0e0e0;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.mealPlan__sidebar-delete:hover {
+  background: #fce4e4;
+  color: #c62828;
+}
+
+.mealPlan__sidebar-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: #757575;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 12px 16px;
+}
+
+@media screen and (max-width: 750px) {
+  .mealPlan__sidebar-toggle {
+    display: flex;
+  }
+
+  .mealPlan__sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 260px;
+    z-index: 999;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+  }
+  .mealPlan__sidebar--open {
+    display: block;
+  }
+
+  .mealPlan__layout {
+    flex-direction: column;
+  }
+
+  .mealPlan__cards {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  .mealPlan__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
 }

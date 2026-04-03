@@ -14,7 +14,9 @@ function RecipeCard({
   likedCards,
   appPageVariant,
 }) {
-  const { addToMyRecipes, myRecipes } = useContext(CurrentUserContext);
+  const { addToMyRecipes, myRecipes, deleteFromMyRecipes } =
+    useContext(CurrentUserContext);
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
 
   const isAdded = myRecipes.some((r) => r.recipe_id === item.recipe_id);
   const handleClick = () => {
@@ -22,7 +24,7 @@ function RecipeCard({
   };
   return (
     <li className="recipeCard__container">
-      <div className="recipeCard__tile">
+      <div className="recipeCard__tile" onClick={handleClick}>
         <div className="recipeCard__top-info">
           <h3
             className="recipeCard__heading"
@@ -43,21 +45,45 @@ function RecipeCard({
             (isAdded ? (
               <CircleCheck className="recipeCard__top-icon recipeCard__added" />
             ) : (
-              <CirclePlus
-                className="recipeCard__top-icon recipeCard__add"
-                onClick={() => addToMyRecipes(item)}
-              />
+              <div
+                onMouseEnter={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  setTooltip({
+                    visible: true,
+                    x: rect.left + rect.width / 2,
+                    y: rect.top,
+                  });
+                }}
+                onMouseLeave={() => setTooltip({ visible: false, x: 0, y: 0 })}
+              >
+                <CirclePlus
+                  className="recipeCard__top-icon recipeCard__add"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToMyRecipes(item);
+                  }}
+                />
+                {tooltip.visible && (
+                  <div
+                    className="recipeCard__tooltip"
+                    style={{ top: tooltip.y - 36, left: tooltip.x }}
+                  >
+                    Add to my recipe collection
+                  </div>
+                )}
+              </div>
             ))}
         </div>
         {appPageVariant === 'myRecipes' ? (
-          <Trash2 className="recipeCard__delete" />
+          <Trash2
+            className="recipeCard__delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteFromMyRecipes(item);
+            }}
+          />
         ) : null}
-        <img
-          src={item.recipe_image}
-          alt=""
-          className="recipeCard__image"
-          onClick={handleClick}
-        />
+        <img src={item.recipe_image} alt="" className="recipeCard__image" />
       </div>
     </li>
   );

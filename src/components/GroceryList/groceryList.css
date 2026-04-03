@@ -76,6 +76,16 @@
   flex: 1;
 }
 
+.grocery__amount-input {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  border-bottom: 1px solid #888;
+  background: transparent;
+  outline: none;
+  width: 100%;
+}
+
 .grocery__table_edit-col {
   text-align: right;
   flex: 1;
@@ -93,4 +103,47 @@
   flex: 0.5;
   justify-items: right;
   padding-right: 15px;
+}
+
+.grocery__plan-section {
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grocery__plan-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 16px;
+  background: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.grocery__plan-header:hover {
+  background: #eeeeee;
+}
+
+.grocery__plan-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.grocery__plan-count {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.grocery__plan-chevron {
+  transition: transform 0.2s;
+}
+
+.grocery__plan-chevron--open {
+  transform: rotate(90deg);
 }

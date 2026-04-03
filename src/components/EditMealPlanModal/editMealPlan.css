@@ -18,4 +18,17 @@
   height: 50px;
   object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-meal__name {
+  font-size: 14pt;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.edit-meal__item--selected {
+  background-color: #e8f5e9;
+  border: 3px solid #2e7d32;
 }

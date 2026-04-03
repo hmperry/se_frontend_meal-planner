@@ -20,8 +20,6 @@ function MyRecipes({
 
   return (
     <div className="my-recipes">
-      <PageHeading>My Recipes</PageHeading>
-
       <div className="my-recipes__button-set">
         <button
           className="my-recipes__button personal"
