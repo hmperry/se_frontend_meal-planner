@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 
 import PageHeading from '../PageHeading/pageHeading';
-import RecipeCard from '../RecipeCard/RecipeCard';
+import RecipeCard from '../RecipeCard/recipeCard';
 import SearchForm from '../SearchForm/searchForm';
 import { defaultMeals } from '../../utils/dummyData';
 import { getRecipes, getDinners } from '../../utils/FatSecretAPI.js';
