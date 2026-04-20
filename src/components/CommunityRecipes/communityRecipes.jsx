@@ -53,19 +53,14 @@ function CommunityRecipes({ handleCardClick }) {
     fetcher
       .then((data) => {
         console.log('load more data:', data);
-        console.log('new recipes count:', data.recipes?.recipe?.length);
-        console.log(
-          'first new recipe:',
-          data.recipes?.recipe?.[0]?.recipe_name
-        );
-        console.log('total results:', data.recipes?.total_results);
-        const newRecipes = data.recipes?.recipe || [];
-        const totalResults = data.recipes?.total_results;
+        console.log('new recipes count:', data.results?.length);
+        console.log('first new recipe:', data.results?.[0]?.title);
+        console.log('total results:', data.totalResults);
+        const newRecipes = data.results || [];
+        const totalResults = data.totalResults;
         setCommunityRecipes((prev) => {
-          const existingIds = new Set(prev.map((r) => r.recipe_id));
-          const uniqueNew = newRecipes.filter(
-            (r) => !existingIds.has(r.recipe_id)
-          );
+          const existingIds = new Set(prev.map((r) => r.id));
+          const uniqueNew = newRecipes.filter((r) => !existingIds.has(r.id));
           const updated = [...prev, ...uniqueNew];
           setHasMore(updated.length < totalResults);
           return updated;
@@ -97,7 +92,8 @@ function CommunityRecipes({ handleCardClick }) {
     setIsLoading(true);
     getDinners()
       .then((data) => {
-        setCommunityRecipes(data.recipes?.recipe || []);
+        console.log('Full API response:', JSON.stringify(data, null, 2));
+        setCommunityRecipes(data.results || []);
       })
       .catch((err) => {
         console.error(err);
@@ -109,7 +105,6 @@ function CommunityRecipes({ handleCardClick }) {
   // Search recipes based on user query
   useEffect(() => {
     if (!communitySearchQuery.trim()) {
-      // setCommunityRecipes([]);
       return;
     }
 
@@ -117,9 +112,9 @@ function CommunityRecipes({ handleCardClick }) {
       setIsLoading(true);
       getRecipes(communitySearchQuery)
         .then((data) => {
-          console.log('total recipes:', data.recipes?.total_results);
-          console.log('recipes returned:', data.recipes?.recipe?.length);
-          setCommunityRecipes(data.recipes?.recipe || []);
+          console.log('total recipes:', data.totalResults);
+          console.log('recipes returned:', data.results?.length);
+          setCommunityRecipes(data.results || []);
         })
         .catch((err) => {
           console.error(err);
@@ -131,10 +126,6 @@ function CommunityRecipes({ handleCardClick }) {
     return () => clearTimeout(timer);
   }, [communitySearchQuery]); // Cleanup on query change or unmount
 
-  // const filteredRecipes = defaultMeals.filter((item) =>
-  //   item.recipe.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
-
   return (
     <div className="community-recipes">
       <div className="community-recipes__top-info">
@@ -143,8 +134,6 @@ function CommunityRecipes({ handleCardClick }) {
           onSearchChange={setCommunitySearchQuery}
           className="community-recipes__search"
         />
-
-        {/* <ViewToggle viewType={viewType} onViewChange={setViewType} /> */}
       </div>
 
       {error && <p className="community-recipes__status">{error}</p>}
@@ -154,7 +143,7 @@ function CommunityRecipes({ handleCardClick }) {
           {communityRecipes.map((item) => {
             return (
               <RecipeCard
-                key={item.recipe_id}
+                key={item.id}
                 item={item}
                 onCardClick={handleCardClick}
                 appPageVariant="community"
@@ -165,7 +154,7 @@ function CommunityRecipes({ handleCardClick }) {
       ) : (
         <ul className="recipeCards__list-list">
           {communityRecipes.map((item) => {
-            return <RecipeListItem key={item.recipe_id} item={item} />;
+            return <RecipeListItem key={item.id} item={item} />;
           })}
         </ul>
       )}

@@ -13,6 +13,7 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
   const [recipeDescription, setRecipeDescription] = useState('');
   const [recipeDirections, setRecipeDirections] = useState(['']);
   const [recipeIngredients, setRecipeIngredients] = useState(['']);
+  const [errors, setErrors] = useState({});
 
   //ingredients
   const addIngredient = () => setRecipeIngredients([...recipeIngredients, '']);
@@ -42,27 +43,47 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
     setRecipeDirections((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const validate = () => {
+    const newErrors = {};
+    if (!recipeName.trim()) newErrors.recipeName = 'Recipe name is required';
+    if (!recipeImage.trim()) newErrors.recipeImage = 'Image URL is required';
+    if (!recipeDescription.trim())
+      newErrors.recipeDescription = 'Description is required';
+    if (recipeIngredients.every((i) => !i.trim()))
+      newErrors.recipeIngredients = 'All ingredients must be filled';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // ✅ validate inputs, then send data to backend to save in DB
+
+    if (!validate()) return;
+
     const newRecipe = {
-      recipe_id: Date.now().toString(), // simple unique ID
-      recipe_name: recipeName,
-      recipe_image: recipeImage,
-      recipe_description: recipeDescription,
-      recipe_ingredients: {
-        ingredient: recipeIngredients
-          .filter((i) => i.trim()) // ✅ remove empty entries
-          .map((i) => ({ ingredient_description: i })),
-      },
-      recipe_directions: {
-        direction: recipeDirections
-          .filter((d) => d.trim())
-          .map((d, index) => ({
-            direction_number: String(index + 1),
-            direction_description: d,
-          })),
-      },
+      id: Date.now().toString(),
+      isCustom: true,
+      title: recipeName,
+      image: recipeImage,
+      summary: recipeDescription,
+      extendedIngredients: recipeIngredients
+        .filter((i) => i.trim())
+        .map((i) => ({
+          original: i,
+          name: i, // use the full string as the name
+          unit: '',
+          amount: 0,
+        })),
+      analyzedInstructions: [
+        {
+          steps: recipeDirections
+            .filter((d) => d.trim())
+            .map((d, index) => ({
+              number: index + 1,
+              step: d, // ← was direction_description
+            })),
+        },
+      ], // ← was recipe_directions.direction[]
     };
 
     console.log('New recipe:', newRecipe); // ✅ check shape before saving

@@ -1,25 +1,22 @@
 import { useState, useEffect } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import LetsEatLogo from '../../images/logo.svg';
 import './App.css';
 
 import Header from '../Header/header';
 import Main from '../Main/main';
-
 import Navigation from '../Navigation/navigation';
 import Footer from '../Footer/footer';
 import RecipeModal from '../RecipeModal/recipeModal';
 import AddRecipeModal from '../AddRecipeModal/AddRecipeModal';
 import EditMealPlanModal from '../EditMealPlanModal/editMealPlan';
 import EditGroceryModal from '../GroceryList/editGroceryModal';
-
+import LoginModal from '../LoginModal/loginModal';
+import RegisterModal from '../RegisterModal/registerModal';
 import { getRecipeDetails, getRecipes } from '../../utils/FatSecretAPI.js';
-import { Edit } from 'lucide-react';
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [currentUser, setCurrentUser] = useState(null);
   const [activeModal, setActiveModal] = useState('');
   const [selectedCard, setSelectedCard] = useState({});
   const [likedCards, setLikedCards] = useState([]);
@@ -43,15 +40,13 @@ function App() {
   }, [myRecipes]);
 
   const addToMyRecipes = (recipe) => {
-    if (myRecipes.some((r) => r.recipe_id === recipe.recipe_id)) return;
+    if (myRecipes.some((r) => r.id === recipe.id)) return;
     setMyRecipes((prev) => [...prev, recipe]);
   };
 
   //For deleting recipes from My Recipes
   const deleteFromMyRecipes = (recipe) => {
-    setMyRecipes((prev) =>
-      prev.filter((r) => r.recipe_id !== recipe.recipe_id)
-    );
+    setMyRecipes((prev) => prev.filter((r) => r.id !== recipe.id));
   };
 
   //For community recipes page
@@ -61,11 +56,11 @@ function App() {
   const handleCardClick = (card) => {
     console.log('card clicked:', card);
     console.log('recipe_image:', card.recipe_image);
-    getRecipeDetails(card.recipe_id)
+    getRecipeDetails(card.id)
       .then((data) => {
         const fullCard = {
           ...card,
-          ...data.recipe,
+          ...data,
         };
         setSelectedCard(fullCard);
         setActiveModal('preview');
@@ -95,10 +90,10 @@ function App() {
   //handle like
   const handleLikeClick = (card) => {
     console.log('clicked like');
-    if (likedCards.includes(card._id)) {
-      setLikedCards(likedCards.filter((id) => id !== card._id));
+    if (likedCards.includes(card.id)) {
+      setLikedCards(likedCards.filter((id) => id !== card.id));
     } else {
-      setLikedCards([...likedCards, card._id]);
+      setLikedCards([...likedCards, card.id]);
     }
   };
 
@@ -128,10 +123,28 @@ function App() {
     );
   };
 
+  // handleLogin
+  const handleLogin = ({ email, password }) => {
+    // mock auth for stage 1
+    setCurrentUser({ name: 'TEST_USER', email });
+  };
+
+  const handleRegister = ({ name, email, password }) => {
+    // mock register for stage 1
+    setCurrentUser({ name, email });
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setActiveModal('');
+  };
+
   return (
     <CurrentUserContext.Provider
       value={{
-        activeModal,
+        handleLogin,
+        handleRegister,
+        handleLogout,
         handleLikeClick,
         handleCardClick,
         openAddRecipeModal,
@@ -152,6 +165,8 @@ function App() {
         deleteFromMyRecipes,
         savedPlans,
         setSavedPlans,
+        currentUser,
+        setActiveModal,
       }}
     >
       <div className="app">
@@ -185,6 +200,16 @@ function App() {
         />
         <EditGroceryModal
           isOpen={activeModal === 'editGroceryModal'}
+          closeActiveModal={closeActiveModal}
+        />
+        <LoginModal
+          isOpen={activeModal === 'loginModal'}
+          onLogin={handleLogin}
+          closeActiveModal={closeActiveModal}
+        />
+        <RegisterModal
+          isOpen={activeModal === 'registerModal'}
+          onRegister={handleRegister}
           closeActiveModal={closeActiveModal}
         />
       </div>

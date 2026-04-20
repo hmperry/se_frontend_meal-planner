@@ -12,10 +12,8 @@ function ModalWithForm({ closeActiveModal, children, isOpen, title }) {
         <button
           type="button"
           onClick={closeActiveModal}
-          className="modal__close modal__close-preview"
-        >
-          <X className="modal__close" />
-        </button>
+          className="modal__close"
+        ></button>
 
         <h2 className="modal__title">{title}</h2>
         {children}

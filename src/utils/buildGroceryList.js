@@ -2,23 +2,20 @@ export const buildGroceryList = (mealPlanDays) => {
   const shoppingList = {};
 
   mealPlanDays.forEach((day) => {
-    if (!day.ingredients?.ingredient) return;
+    if (!Array.isArray(day.ingredients)) return;
 
-    const ingredients = Array.isArray(day.ingredients.ingredient)
-      ? day.ingredients.ingredient
-      : [day.ingredients.ingredient];
-
-    ingredients.forEach((item) => {
-      const key = `${item.food_name}__${item.measurement_description}`;
-      const units = parseFloat(item.number_of_units) || 0;
+    day.ingredients.forEach((item) => {
+      const key = `${item.name}__${item.unit}`;
+      const qty = item.amount || 0;
 
       if (shoppingList[key]) {
-        shoppingList[key].units += units;
+        shoppingList[key].qty += qty;
       } else {
         shoppingList[key] = {
-          ingredient: item.food_name,
-          measurement: item.measurement_description,
-          units,
+          ingredient: item.name,
+          unit: item.unit,
+          qty,
+          original: item.original,
           checked: false,
         };
       }
@@ -27,7 +24,9 @@ export const buildGroceryList = (mealPlanDays) => {
 
   return Object.values(shoppingList).map((item) => ({
     ingredient: item.ingredient,
-    amount: `${parseFloat(item.units.toFixed(2))} ${item.measurement}`,
+    amount: item.unit
+      ? `${parseFloat(item.qty.toFixed(2))} ${item.unit}`
+      : item.original,
     checked: item.checked,
   }));
 };

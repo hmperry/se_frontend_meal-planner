@@ -34,6 +34,17 @@
   color: #fff;
 }
 
+.header__greeting {
+  padding: 0 15px 0 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  font-size: 14pt;
+  font-weight: 500;
+  color: #fff;
+  align-self: center;
+}
+
 .header__menu {
   display: none;
   background-color: transparent;

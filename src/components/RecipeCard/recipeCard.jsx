@@ -18,7 +18,7 @@ function RecipeCard({
     useContext(CurrentUserContext);
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
 
-  const isAdded = myRecipes.some((r) => r.recipe_id === item.recipe_id);
+  const isAdded = myRecipes.some((r) => r.id === item.id);
   const handleClick = () => {
     onCardClick(item);
   };
@@ -28,22 +28,21 @@ function RecipeCard({
         <div className="recipeCard__top-info">
           <h3
             className="recipeCard__heading"
-            alt={item.recipe_name}
-            title={item.recipe_name}
+            alt={item.title}
+            title={item.title}
           >
-            {item.recipe_name}
+            {item.title}
           </h3>
-          {/* {appPageVariant === 'myRecipes' && (
-            <Like
-              className="recipeCard__top-icon"
-              item={item}
-              likedCards={likedCards}
-              onLikeClick={onLikeClick}
-            />
-          )} */}
+
           {appPageVariant === 'community' &&
             (isAdded ? (
-              <CircleCheck className="recipeCard__top-icon recipeCard__added" />
+              <CircleCheck
+                className="recipeCard__top-icon recipeCard__added"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteFromMyRecipes(item);
+                }}
+              />
             ) : (
               <div
                 onMouseEnter={(e) => {
@@ -83,8 +82,8 @@ function RecipeCard({
             }}
           />
         ) : null}
-        {item.recipe_image ? (
-          <img src={item.recipe_image} alt="" className="recipeCard__image" />
+        {item.image ? (
+          <img src={item.image} alt="" className="recipeCard__image" />
         ) : (
           <div className="recipeCard__no-image">
             <p className="recipeCard__no-image-text">Photo not available</p>

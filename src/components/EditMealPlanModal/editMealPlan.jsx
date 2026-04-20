@@ -18,29 +18,43 @@ function EditMealPlanModal({ isOpen, closeActiveModal }) {
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
 
   const filtered = myRecipes.filter((r) =>
-    r.recipe_name.toLowerCase().includes(search.toLowerCase())
+    r.title.toLowerCase().includes(search.toLowerCase())
   );
 
   const handleSelect = (recipe) => {
-    console.log('recipe.recipe_id:', recipe.recipe_id);
-    setSelectedRecipeId(recipe.recipe_id);
+    console.log('full recipe object:', recipe); // ← add this
+    console.log('recipe.isCustom:', recipe.isCustom);
+    setSelectedRecipeId(recipe.id);
     setTimeout(() => {
-      getRecipeDetails(recipe.recipe_id).then((data) => {
-        console.log('data.directions:', data.directions);
-        console.log('data.ingredients:', data.ingredients);
+      if (recipe.isCustom) {
         updateMealPlanDay({
           ...selectedDay,
-          recipe: recipe.recipe_name,
-          link: recipe.recipe_image,
-          description: recipe.recipe_description,
-          directions: data.recipe.directions,
-          ingredients: data.recipe.ingredients,
+          recipe: recipe.title,
+          link: recipe.image,
+          description: recipe.summary,
+          directions: recipe.analyzedInstructions?.[0]?.steps || [],
+          ingredients: recipe.extendedIngredients || [],
         });
-
         closeActiveModal();
         setSelectedRecipeId(null);
-      }, 400);
-    });
+      } else {
+        getRecipeDetails(recipe.id).then((data) => {
+          console.log('data.directions:', data.directions);
+          console.log('data.ingredients:', data.ingredients);
+          updateMealPlanDay({
+            ...selectedDay,
+            recipe: recipe.title,
+            link: recipe.image,
+            description: recipe.summary,
+            directions: data.analyzedInstructions?.[0]?.steps || [],
+            ingredients: data.extendedIngredients || [0],
+          });
+
+          closeActiveModal();
+          setSelectedRecipeId(null);
+        });
+      }
+    }, 400);
   };
 
   const formatDate = (dateString) => {
@@ -70,16 +84,16 @@ function EditMealPlanModal({ isOpen, closeActiveModal }) {
       <ul className="edit-meal__list">
         {filtered.map((recipe) => (
           <li
-            key={recipe._id}
-            className={`edit-meal__item ${selectedRecipeId === recipe.recipe_id ? 'edit-meal__item--selected' : ''}`}
+            key={recipe.id}
+            className={`edit-meal__item ${selectedRecipeId === recipe.id ? 'edit-meal__item--selected' : ''}`}
             onClick={() => handleSelect(recipe)}
           >
             <img
-              src={recipe.recipe_image}
-              alt={recipe.recipe_name}
+              src={recipe.image}
+              alt={recipe.title}
               className="edit-meal__img"
             />
-            <p className="edit-meal__name">{recipe.recipe_name}</p>
+            <p className="edit-meal__name">{recipe.title}</p>
           </li>
         ))}
       </ul>

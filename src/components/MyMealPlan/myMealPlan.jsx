@@ -194,7 +194,13 @@ function MyMealPlan() {
                 onClick={handleSaveClick}
               >
                 {showSaved ? (
-                  <CircleCheck size={16} />
+                  <CircleCheck
+                    size={16}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteFromMyRecipes(item);
+                    }}
+                  />
                 ) : (
                   <BookmarkPlus size={16} />
                 )}
@@ -228,9 +234,6 @@ function MyMealPlan() {
                 <div className="mealPlan__meal-row">
                   <p className="mealPlan__recipe">
                     {day.recipe || 'No meal planned'}
-                    {/* {selectedDay?._id === recipe._id
-                  ? selectedDay.recipe
-                  : recipe.recipe} */}
                   </p>
                   <button
                     className="mealPlan__edit-button"
@@ -254,19 +257,10 @@ function MyMealPlan() {
                         />
                       </div>
                       <div className="mealPlan__expanded_ingredients">
-                        {/* {day.ingredients
-                          ?.split(/(?=\d+)/)
-                          .map((step, index) => (
-                            <p key={index}>{step.trim()}</p>
-                          ))} */}
-                        {Array.isArray(day.ingredients?.ingredient)
-                          ? day.ingredients.ingredient.map(
-                              (ingredient, index) => (
-                                <p key={index}>
-                                  {ingredient.ingredient_description}
-                                </p>
-                              )
-                            )
+                        {Array.isArray(day.ingredients)
+                          ? day.ingredients.map((item, index) => (
+                              <p key={index}>{item.original || item.name}</p>
+                            ))
                           : null}
                       </div>
                     </div>
@@ -275,27 +269,21 @@ function MyMealPlan() {
                       <h4 className="mealPlan__expanded_subhead">
                         Description
                       </h4>
-                      <p className="mealPlan__expanded_description">
-                        {day.description}
-                      </p>
+                      <p
+                        className="mealPlan__expanded_description"
+                        dangerouslySetInnerHTML={{ __html: day.description }}
+                      />
                       <h4 className="mealPlan__expanded_subhead">
                         Instructions
                       </h4>
                       <div className="mealPlan__expanded_instructions">
-                        {/* {day.instructions
-                        ?.split(/(?=\d+\.)/)
-                        .map((step, index) => (
-                          <p key={index}>{step.trim()}</p>
-                        ))} */}
-                        {Array.isArray(day.directions?.direction) ? (
-                          day.directions.direction.map((step, index) => (
-                            <p key={index}>{step.direction_description}</p>
-                          ))
-                        ) : day.directions?.direction ? (
-                          <p>
-                            {day.directions.direction.direction_description}
-                          </p>
-                        ) : null}
+                        {Array.isArray(day.directions)
+                          ? day.directions.map((step, index) => (
+                              <p key={index}>
+                                {step.number}. {step.step}
+                              </p>
+                            ))
+                          : null}
                       </div>
                     </div>
                   </div>

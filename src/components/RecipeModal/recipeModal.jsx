@@ -17,9 +17,7 @@ function RecipeModal({
     useContext(CurrentUserContext);
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
 
-  const isAdded = myRecipes.some(
-    (r) => r.recipe_id === selectedCard?.recipe_id
-  );
+  const isAdded = myRecipes.some((r) => r.id === selectedCard?.id);
 
   return (
     <div
@@ -30,15 +28,23 @@ function RecipeModal({
         className="recipeModal__preview"
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" className="modal__close modal__close-preview">
-          <X className="modal__close" onClick={closeActiveModal} />
-        </button>
-        <h3 className="recipeModal__heading">{selectedCard.recipe_name}</h3>
+        <button
+          type="button"
+          className="recipeModal__close modal__close-preview"
+          onClick={closeActiveModal}
+        ></button>
+        <h3 className="recipeModal__heading">{selectedCard.title}</h3>
 
         <div className="recipeModal__top-info">
           {isAdded ? (
             <>
-              <CircleCheck className="recipeModal__top-icon recipeModal__added" />
+              <CircleCheck
+                className="recipeModal__top-icon recipeModal__added"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteFromMyRecipes(item);
+                }}
+              />
               <Trash2
                 className="recipeModal__delete"
                 onClick={(e) => {
@@ -82,37 +88,38 @@ function RecipeModal({
           <div className="recipeModal__left-col">
             <div className="recipeModal__img-container">
               <img
-                src={selectedCard.recipe_image}
-                alt=""
+                src={selectedCard.image}
+                alt={selectedCard.title}
                 className="recipeModal__image"
               />
             </div>
             <h4 className="recipeModal__subhead">Ingredients</h4>
             <div className="recipeModal__ingredients">
-              {Array.isArray(selectedCard.ingredients?.ingredient)
-                ? selectedCard.ingredients.ingredient.map(
-                    (ingredient, index) => (
-                      <p key={index}>{ingredient.ingredient_description}</p>
-                    )
-                  )
+              {Array.isArray(selectedCard.extendedIngredients)
+                ? selectedCard.extendedIngredients.map((ingredient, index) => (
+                    <p key={index}>{ingredient.original}</p>
+                  ))
                 : null}
             </div>
           </div>
 
           <div className="recipeModal__text-info">
             <h4 className="recipeModal__subhead">Description</h4>
-            <p className="recipeModal__description">
-              {selectedCard.recipe_description}
-            </p>
+            <p
+              className="recipeModal__description"
+              dangerouslySetInnerHTML={{ __html: selectedCard.summary }}
+            />
             <h4 className="recipeModal__subhead">Instructions</h4>
             <div className="recipeModal__instructions">
-              {Array.isArray(selectedCard.directions?.direction) ? (
-                selectedCard.directions.direction.map((step, index) => (
-                  <p key={index}>{step.direction_description}</p>
-                ))
-              ) : selectedCard.directions?.direction ? (
-                <p>{selectedCard.directions.direction.direction_description}</p>
-              ) : null}
+              {Array.isArray(selectedCard.analyzedInstructions?.[0]?.steps)
+                ? selectedCard.analyzedInstructions[0].steps.map(
+                    (step, index) => (
+                      <p key={index}>
+                        {step.number}. {step.step}
+                      </p>
+                    )
+                  )
+                : null}
             </div>
           </div>
         </div>

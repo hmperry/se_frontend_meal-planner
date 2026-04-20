@@ -2,7 +2,23 @@ import './Header.css';
 import logo from '../../images/logo2_white.svg';
 import { User, SquareMenu } from 'lucide-react';
 
+import { useContext } from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+
 function Header() {
+  const {
+    currentUser,
+    setActiveModal,
+    handleLogin,
+    handleRegister,
+    handleLogout,
+  } = useContext(CurrentUserContext);
+  const openLoginModal = () => {
+    setActiveModal('loginModal');
+  };
+  const openRegisterModal = () => {
+    setActiveModal('registerModal');
+  };
   return (
     <header className="header">
       <img
@@ -12,13 +28,33 @@ function Header() {
       />
 
       <div className="header__user-info">
-        <button className="header__button" type="button">
-          My Profile
-        </button>
-        <button className="header__button" type="button">
-          Sign Out
-        </button>
+        {currentUser ? (
+          <>
+            <div className="header__greeting">Hi, {currentUser.name}!</div>
+            <button onClick={handleLogout} className="header__button">
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="header__button"
+              type="button"
+              onClick={openLoginModal}
+            >
+              Sign in
+            </button>
+            <button
+              className="header__button"
+              type="button"
+              onClick={openRegisterModal}
+            >
+              Register
+            </button>
+          </>
+        )}
       </div>
+
       <button
         className="header__menu"
         type="button"
