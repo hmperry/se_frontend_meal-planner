@@ -128,11 +128,15 @@ function CommunityRecipes({ handleCardClick }) {
 
   return (
     <div className="community-recipes">
-      <div className="community-recipes__top-info">
+      <h2 className="community-recipes__title">Find and Add Recipes</h2>
+      <p className="community-recipes__text-description">
+        Save recipes from the community to your collection, and add these later
+        to your meal plans.
+      </p>
+      <div className="community-recipes__search">
         <SearchForm
           searchQuery={communitySearchQuery}
           onSearchChange={setCommunitySearchQuery}
-          className="community-recipes__search"
         />
       </div>
 

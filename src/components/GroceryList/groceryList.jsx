@@ -98,8 +98,10 @@ function GroceryList({ isOpen, closeActiveModal }) {
 
   return (
     <div className="grocery-list">
+      <h2 className="grocery-list__title">Grocery Shopping List</h2>
+
       {savedPlans.length === 0 ? (
-        <p className="grocery__empty">
+        <p className="grocery-list__text-description">
           Save a meal plan to generate a grocery list.
         </p>
       ) : (
@@ -108,88 +110,96 @@ function GroceryList({ isOpen, closeActiveModal }) {
           const isExpanded = expandedPlanId === plan.id;
 
           return (
-            <div key={plan.id} className="grocery__plan-section">
-              {/* Plan header — click to expand/collapse */}
-              <button
-                className="grocery__plan-header"
-                onClick={() => togglePlan(plan.id)}
-              >
-                <ChevronRight
-                  className={`grocery__plan-chevron ${isExpanded ? 'grocery__plan-chevron--open' : ''}`}
-                  size={18}
-                />
-                <span className="grocery__plan-name">
-                  {formatDateRange(plan.startDate, plan.endDate)}
-                </span>
-                <span className="grocery__plan-count">
-                  {plan.days.filter((d) => d.recipe).length} meals
-                </span>
-              </button>
+            <div className="grocery-list__container">
+              <p className="grocery-list__text-description">
+                View your Grocery List(s) based on specific meal plans you
+                created.
+              </p>
 
-              {/* Expanded grocery list table */}
-              {isExpanded && (
-                <div className="grocery-list__table_border">
-                  <div className="grocery-list__table">
-                    <div className="grocery__table-header grocery__table-row">
-                      <div className="grocery__table_check-col"></div>
-                      <div className="grocery__table_ingred-col">
-                        Ingredient
+              <div key={plan.id} className="grocery__plan-section">
+                {/* Plan header — click to expand/collapse */}
+
+                <button
+                  className="grocery__plan-header"
+                  onClick={() => togglePlan(plan.id)}
+                >
+                  <ChevronRight
+                    className={`grocery__plan-chevron ${isExpanded ? 'grocery__plan-chevron--open' : ''}`}
+                    size={18}
+                  />
+                  <span className="grocery__plan-name">
+                    {formatDateRange(plan.startDate, plan.endDate)}
+                  </span>
+                  <span className="grocery__plan-count">
+                    {plan.days.filter((d) => d.recipe).length} meals
+                  </span>
+                </button>
+
+                {/* Expanded grocery list table */}
+                {isExpanded && (
+                  <div className="grocery-list__table_border">
+                    <div className="grocery-list__table">
+                      <div className="grocery__table-header grocery__table-row">
+                        <div className="grocery__table_check-col"></div>
+                        <div className="grocery__table_ingred-col">
+                          Ingredient
+                        </div>
+                        <div className="grocery__table_amount-col">Amount</div>
                       </div>
-                      <div className="grocery__table_amount-col">Amount</div>
-                    </div>
-                    {groceryList.length === 0 ? (
-                      <p className="grocery__empty">
-                        No meals assigned in this plan.
-                      </p>
-                    ) : (
-                      groceryList.map(
-                        ({ ingredient, amount, checked }, index) => {
-                          const key = `${plan.id}-${index}`;
-                          return (
-                            <div className="grocery__table-row" key={index}>
-                              <div className="grocery__table_check-col">
-                                <Checkbox
-                                  checked={checked}
-                                  onChange={() =>
-                                    handleCheckboxChange(plan.id, index)
-                                  }
-                                />
-                              </div>
-                              <div className="grocery__table_ingred-col">
-                                {ingredient}
-                              </div>
-                              <div className="grocery__table_amount-col">
-                                {editingKey === key ? (
-                                  <input
-                                    className="grocery__amount-input"
-                                    value={amount}
-                                    onChange={(e) =>
-                                      handleAmountChange(
-                                        plan.id,
-                                        index,
-                                        e.target.value
-                                      )
+                      {groceryList.length === 0 ? (
+                        <p className="grocery-list__empty">
+                          No meals assigned in this plan.
+                        </p>
+                      ) : (
+                        groceryList.map(
+                          ({ ingredient, amount, checked }, index) => {
+                            const key = `${plan.id}-${index}`;
+                            return (
+                              <div className="grocery__table-row" key={index}>
+                                <div className="grocery__table_check-col">
+                                  <Checkbox
+                                    checked={checked}
+                                    onChange={() =>
+                                      handleCheckboxChange(plan.id, index)
                                     }
-                                    onBlur={() => setEditingKey(null)}
-                                    onKeyDown={(e) =>
-                                      e.key === 'Enter' && setEditingKey(null)
-                                    }
-                                    autoFocus
                                   />
-                                ) : (
-                                  <span onClick={() => setEditingKey(key)}>
-                                    {amount}
-                                  </span>
-                                )}
+                                </div>
+                                <div className="grocery__table_ingred-col">
+                                  {ingredient}
+                                </div>
+                                <div className="grocery__table_amount-col">
+                                  {editingKey === key ? (
+                                    <input
+                                      className="grocery__amount-input"
+                                      value={amount}
+                                      onChange={(e) =>
+                                        handleAmountChange(
+                                          plan.id,
+                                          index,
+                                          e.target.value
+                                        )
+                                      }
+                                      onBlur={() => setEditingKey(null)}
+                                      onKeyDown={(e) =>
+                                        e.key === 'Enter' && setEditingKey(null)
+                                      }
+                                      autoFocus
+                                    />
+                                  ) : (
+                                    <span onClick={() => setEditingKey(key)}>
+                                      {amount}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
-                            </div>
-                          );
-                        }
-                      )
-                    )}
+                            );
+                          }
+                        )
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           );
         })

@@ -19,17 +19,23 @@
 .addRecipeModal__label_instructions {
 } */
 
+.addRecipeModal__form-description {
+  width: 85%;
+  padding: 0 0 15px 0;
+  border-bottom: 0.75px solid #999;
+}
+
 .addRecipeModal__input {
   border-radius: 5px;
-  width: 400px;
+  width: 85%;
   height: 25px;
   padding: 3px 3px 3px 10px;
 }
 
 .addRecipeModal__textarea {
   border-radius: 5px;
-  width: 80%;
-  height: 100px;
+  width: 85%;
+  height: 25px;
   padding: 3px 3px 3px 10px;
 }
 
@@ -59,6 +65,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .addRecipe__remove {

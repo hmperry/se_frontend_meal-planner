@@ -97,6 +97,11 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
       isOpen={isOpen}
       closeActiveModal={closeActiveModal}
     >
+      <p className="addRecipeModal__form-description">
+        You may add personal recipes from other sources so that you can compile
+        your comprehensive meal plan and grocery list. This recipe will show in
+        your My Recipes collection.
+      </p>
       <form onSubmit={handleSubmit} className="addRecipeModal__form">
         <div className="addRecipe__container">
           <label
@@ -130,12 +135,12 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             className="addRecipeModal__label addRecipeModal__label_description"
           >
             Description
-            <textarea
+            <input
               id="addRecipe-description"
               required
               type="text"
               placeholder=""
-              className="addRecipeModal__textarea addRecipeModal__textarea_description"
+              className="addRecipeModal__input addRecipeModal__textarea_description"
               value={recipeDescription}
               onChange={(e) => setRecipeDescription(e.target.value)}
             />
@@ -175,7 +180,7 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             Directions
             {recipeDirections.map((direction, index) => (
               <div key={index} className="addRecipe__row">
-                <textarea
+                <input
                   className="addRecipeModal__textarea"
                   placeholder={`Step ${index + 1}`}
                   value={direction}

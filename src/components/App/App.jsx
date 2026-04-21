@@ -56,6 +56,11 @@ function App() {
   const handleCardClick = (card) => {
     console.log('card clicked:', card);
     console.log('recipe_image:', card.recipe_image);
+    if (card.isCustom) {
+      setSelectedCard(card);
+      setActiveModal('preview');
+      return;
+    }
     getRecipeDetails(card.id)
       .then((data) => {
         const fullCard = {

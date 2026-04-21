@@ -155,6 +155,12 @@ function MyMealPlan() {
   return (
     <section className="mealPlan__layout">
       <div className="mealPlan__wrapper">
+        <h2 className="mealPlan__title">Plan a Custom Meal Plan</h2>
+        <p className="mealPlan__text-description">
+          You choose how many days to plan. You choose which meals based on your
+          saved meals from your recipe collection. Then use the Grocery List to
+          save time at the store.
+        </p>
         {isSaving && <Presaver />}
         {/* ✅ Date range picker */}
 
@@ -293,7 +299,6 @@ function MyMealPlan() {
           )}
         </div>
       </div>
-
       <aside
         className={`mealPlan__sidebar ${sidebarOpen ? 'mealPlan__sidebar--open' : ''}`}
       >

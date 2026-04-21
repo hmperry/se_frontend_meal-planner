@@ -7,6 +7,19 @@
   text-align: left;
 }
 
+.grocery-list__title {
+  margin: 0;
+  padding: 15px 0 20px;
+  text-align: left;
+}
+
+.grocery-list__text-description {
+  margin: 0;
+  padding: 0 0 25px;
+  width: 70%;
+  text-align: left;
+}
+
 .grocery-list__table {
   /* padding-top: 8px; */
   margin-top: 15px;
@@ -110,6 +123,13 @@
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
+  width: 85%;
+  min-width: 350px;
+}
+
+.grocery-list__empty {
+  padding: 0 0 0 15px;
+  text-align: center;
 }
 
 .grocery__plan-header {

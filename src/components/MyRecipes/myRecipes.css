@@ -1,8 +1,8 @@
 .my-recipes {
-  margin: 0 auto;
+  margin: 0;
   flex-direction: column;
   display: flex;
-  align-items: center;
+  align-items: left;
   width: 88%;
   max-width: 1360px;
   padding-bottom: 20px;
@@ -24,6 +24,19 @@
   cursor: pointer;
 }
 
+.my-recipes__title {
+  margin: 0;
+  padding: 15px 0 25px;
+  text-align: left;
+}
+
+.my-recipes__text-description {
+  margin: 0;
+  padding: 0 0 35px;
+  width: 70%;
+  text-align: left;
+}
+
 .circle {
   background-color: #fff;
   border: 1px solid #00c500;
@@ -37,7 +50,7 @@
   display: flex;
 
   margin: 0 auto;
-  justify-content: center;
+  justify-content: left;
   gap: 15px;
   flex-wrap: wrap;
   width: 100%;
