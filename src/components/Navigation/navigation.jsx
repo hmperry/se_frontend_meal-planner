@@ -1,15 +1,22 @@
 import './Navigation.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { useContext } from 'react';
 import { NavData } from './navData';
 
 function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const visibleNav = NavData.filter((val) => !val.protected || currentUser);
+
+  if (!currentUser) return null;
 
   return (
     <div className="Navigation">
       <ul className="nav__bar">
-        {NavData.map((val, key) => {
+        {visibleNav.map((val, key) => {
           return (
             <li
               className={

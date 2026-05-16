@@ -1,7 +1,12 @@
 import '../SearchForm/searchForm.css';
 import '../CommunityRecipes/communityRecipes.css';
 
-function SearchForm({ searchQuery, onSearchChange, onSearch }) {
+function SearchForm({
+  searchQuery,
+  onSearchChange,
+  onSearch,
+  placeholder = 'Search...',
+}) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       onSearch();
@@ -12,7 +17,7 @@ function SearchForm({ searchQuery, onSearchChange, onSearch }) {
       <input
         type="text"
         className="searchForm__input community-recipes__search-input"
-        placeholder="Search..."
+        placeholder={placeholder}
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
         // onKeyDown={handleKeyDown}

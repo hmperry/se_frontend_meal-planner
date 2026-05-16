@@ -39,7 +39,7 @@ function MyRecipes({
         </button> */}
       </div>
 
-      <ul className="recipeCards__list-tiles">
+      <ul className="recipeCards__list-tiles myRecipes__card-container">
         {myRecipes.map((item) => {
           return (
             <RecipeCard

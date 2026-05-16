@@ -144,6 +144,8 @@ function App() {
     setActiveModal('');
   };
 
+  
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -152,6 +154,7 @@ function App() {
         handleLogout,
         handleLikeClick,
         handleCardClick,
+
         openAddRecipeModal,
         closeActiveModal,
         openEditMealPlanModal,
@@ -211,11 +214,13 @@ function App() {
           isOpen={activeModal === 'loginModal'}
           onLogin={handleLogin}
           closeActiveModal={closeActiveModal}
+          onSwitchToSignUp={() => setActiveModal('registerModal')}
         />
         <RegisterModal
           isOpen={activeModal === 'registerModal'}
           onRegister={handleRegister}
           closeActiveModal={closeActiveModal}
+          onSwitchToSignIn={() => setActiveModal('loginModal')}
         />
       </div>
     </CurrentUserContext.Provider>

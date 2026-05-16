@@ -80,7 +80,7 @@ function EditMealPlanModal({ isOpen, closeActiveModal }) {
         onChange={(e) => setSearch(e.target.value)}
         className="modal__input"
       />
-      <p>selectedRecipeId: {String(selectedRecipeId)}</p>
+
       <ul className="edit-meal__list">
         {filtered.map((recipe) => (
           <li

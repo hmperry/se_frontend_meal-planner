@@ -19,10 +19,10 @@ function Main({
       <Routes>
         <Route path="/grocerylist" element={<GroceryList />}></Route>
         <Route
-          path="/communityrecipes"
+          path="/"
           element={<CommunityRecipes handleCardClick={handleCardClick} />}
         ></Route>
-        <Route path="/" element={<MyMealPlan />}></Route>
+        <Route path="/mealplan" element={<MyMealPlan />}></Route>
         <Route
           path="/myrecipes"
           element={

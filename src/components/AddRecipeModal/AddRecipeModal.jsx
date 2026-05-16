@@ -43,6 +43,21 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
     setRecipeDirections((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const resetForm = () => {
+  setRecipeName('');
+  setRecipeImage('');
+  setRecipeDescription('');
+  setRecipeIngredients(['']);
+  setRecipeDirections(['']);
+  setErrors({});
+};
+
+const handleCloseForm = () => {
+  resetForm();
+  closeActiveModal();
+};
+
+
   const validate = () => {
     const newErrors = {};
     if (!recipeName.trim()) newErrors.recipeName = 'Recipe name is required';
@@ -54,6 +69,14 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  // Is form valid?
+  const isFormValid =
+  recipeName.trim() &&
+  recipeImage.trim() &&
+  recipeDescription.trim() &&
+  recipeIngredients.some((i) => i.trim()) &&
+  recipeDirections.some((d) => d.trim());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -88,14 +111,14 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
 
     console.log('New recipe:', newRecipe); // ✅ check shape before saving
     addToMyRecipes(newRecipe);
-    closeActiveModal();
+    handleCloseForm();
   };
 
   return (
     <ModalWithForm
       title="Add Personal Recipe"
       isOpen={isOpen}
-      closeActiveModal={closeActiveModal}
+      closeActiveModal={handleCloseForm}
     >
       <p className="addRecipeModal__form-description">
         You may add personal recipes from other sources so that you can compile
@@ -181,7 +204,7 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             {recipeDirections.map((direction, index) => (
               <div key={index} className="addRecipe__row">
                 <input
-                  className="addRecipeModal__textarea"
+                  className="addRecipeModal__input"
                   placeholder={`Step ${index + 1}`}
                   value={direction}
                   onChange={(e) => updateDirection(index, e.target.value)}
@@ -201,7 +224,7 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             </button>
           </label>
 
-          <button type="submit" className="addRecipeModal__submit">
+          <button type="submit" className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit_active' : ''}`} disabled={!isFormValid}>
             Add Recipe
           </button>
         </div>

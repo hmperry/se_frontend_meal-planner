@@ -37,6 +37,11 @@
   text-align: left;
 }
 
+.myRecipes__card-container{
+  justify-content: flex-start;
+  padding-top: 25px;
+}
+
 .circle {
   background-color: #fff;
   border: 1px solid #00c500;

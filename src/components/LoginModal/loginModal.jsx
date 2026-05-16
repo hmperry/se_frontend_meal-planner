@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import ModalWithForm from '../ModalWithForm/modalWithForm';
+import './loginModal.css'
 
-function LoginModal({ isOpen, closeActiveModal, onLogin }) {
+function LoginModal({ isOpen, closeActiveModal, onLogin, onSwitchToSignUp }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -16,6 +17,11 @@ function LoginModal({ isOpen, closeActiveModal, onLogin }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  const isFormValid =
+  email.trim() &&
+  password.trim()
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,32 +44,40 @@ function LoginModal({ isOpen, closeActiveModal, onLogin }) {
     >
       <form onSubmit={handleSubmit} className="loginModal__form">
         <label className="loginModal__label">
-          Email
           <input
             type="text"
             className="loginModal__input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
           />
           {errors.email && <p className="loginModal__error">{errors.email}</p>}
         </label>
 
         <label className="loginModal__label">
-          Password
+          
           <input
             type="password"
             className="loginModal__input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
           />
           {errors.password && (
             <p className="loginModal__error">{errors.password}</p>
           )}
         </label>
+<div className="LoginModal__bottom-btns">
 
-        <button type="submit" className="loginModal__submit">
+        <button type="submit" className={`loginModal__submit ${isFormValid ? 'loginModal__submit_active' : ''}`} disabled={!isFormValid}>
           Login
         </button>
+
+        <button type="button" className="loginModal__signin" onClick={onSwitchToSignUp}>
+          or no account yet?<span className="loginModal__signup-text"> Sign Up</span>
+        </button>
+
+        </div>
       </form>
     </ModalWithForm>
   );
