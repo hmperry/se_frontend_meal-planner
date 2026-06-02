@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 
-import PageHeading from '../PageHeading/pageHeading';
-import RecipeCard from '../RecipeCard/recipeCard';
-import SearchForm from '../SearchForm/searchForm';
-import { defaultMeals } from '../../utils/dummyData';
+import PageHeading from '../PageHeading/PageHeading.jsx';
+import RecipeCard from '../RecipeCard/RecipeCard.jsx';
+import SearchForm from '../SearchForm/SearchForm.jsx';
+import { defaultMeals } from '../../utils/DummyData.js';
 import { getRecipes, getDinners } from '../../utils/FatSecretAPI.js';
 
 import './communityRecipes.css';
-import RecipeListItem from '../RecipeListItem/recipeListItem';
-import ViewToggle from '../ViewToggle/viewToggle';
+import RecipeListItem from '../RecipeListItem/RecipeListItem.jsx';
+import ViewToggle from '../ViewToggle/ViewToggle.jsx';
 
-import CurrentUserContext from '../../contexts/CurrentUserContext';
-import Preloader from '../Preloader/preloader.jsx';
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
+import Preloader from '../Preloader/Preloader.jsx';
 
 function CommunityRecipes({ handleCardClick }) {
   const [viewType, setViewType] = useState('cards');
@@ -29,6 +29,7 @@ function CommunityRecipes({ handleCardClick }) {
     setCommunitySearchQuery,
     communityRecipes,
     setCommunityRecipes,
+    currentUser,
   } = useContext(CurrentUserContext);
 
   // reset page when search query changes
@@ -39,11 +40,13 @@ function CommunityRecipes({ handleCardClick }) {
 
   // Load more recipes
   const handleLoadMore = () => {
-    console.log('handleLoadMore fired, page:', page);
+    console.log('handleLoadMore fired');
+    console.log('pageRef.current before increment:', pageRef.current);
+    console.log('hasMore:', hasMore);
+    console.log('communitySearchQuery:', communitySearchQuery);
     const nextPage = pageRef.current + 1;
     pageRef.current = nextPage;
-    console.log('nextPage:', nextPage, 'pageRef.current:', pageRef.current);
-    // setPage(nextPage);
+
     setIsLoading(true);
 
     const fetcher = communitySearchQuery.trim()
@@ -128,11 +131,31 @@ function CommunityRecipes({ handleCardClick }) {
 
   return (
     <div className="community-recipes">
-      <div className="community-recipes__top-info">
+      {currentUser ? (
+        <>
+          <h2 className="community-recipes__title">Find and Add Recipes</h2>
+          <p className="community-recipes__text-description">
+            Save recipes from the community to your collection, and add these
+            later to your meal plans.
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 className="community-recipes__title__no-user">
+            Make meal planning less of a struggle.
+          </h2>
+          <p className="community-recipes__text-description__no-user">
+            Sign in to save recipes, create meal plans, and build shopping lists
+            so you're prepared when people ask <em>What's for dinner?</em>
+          </p>
+        </>
+      )}
+
+      <div className="community-recipes__search">
         <SearchForm
           searchQuery={communitySearchQuery}
           onSearchChange={setCommunitySearchQuery}
-          className="community-recipes__search"
+          placeholder="Search the recipe collection"
         />
       </div>
 

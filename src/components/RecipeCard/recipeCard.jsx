@@ -2,7 +2,7 @@ import '../RecipeCard/RecipeCard.css';
 // import { defaultMeals } from '../../utils/dummyData';
 import { Trash2, Heart, CirclePlus, CircleCheck } from 'lucide-react';
 import { useContext, useState } from 'react';
-import Like from '../Like/like';
+import Like from '../Like/Like';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
@@ -73,6 +73,15 @@ function RecipeCard({
               </div>
             ))}
         </div>
+
+        {item.image ? (
+          <img src={item.image} alt="" className="recipeCard__image" />
+        ) : (
+          <div className="recipeCard__no-image">
+            <p className="recipeCard__no-image-text">Photo not available</p>
+          </div>
+        )}
+
         {appPageVariant === 'myRecipes' ? (
           <Trash2
             className="recipeCard__delete"
@@ -82,13 +91,6 @@ function RecipeCard({
             }}
           />
         ) : null}
-        {item.image ? (
-          <img src={item.image} alt="" className="recipeCard__image" />
-        ) : (
-          <div className="recipeCard__no-image">
-            <p className="recipeCard__no-image-text">Photo not available</p>
-          </div>
-        )}
       </div>
     </li>
   );

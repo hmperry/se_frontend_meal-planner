@@ -1,6 +1,6 @@
-import PageHeading from '../PageHeading/pageHeading';
+import PageHeading from '../PageHeading/PageHeading';
 import RecipeCard from '../RecipeCard/RecipeCard';
-import { defaultMeals } from '../../utils/dummyData';
+import { defaultMeals } from '../../utils/DummyData';
 import { SquarePen, CirclePlus } from 'lucide-react';
 
 import { useContext } from 'react';
@@ -19,7 +19,12 @@ function MyRecipes({
   const { openAddRecipeModal, myRecipes } = useContext(CurrentUserContext);
 
   return (
-    <div className="my-recipes">
+    <section className="my-recipes">
+      <h2 className="my-recipes__title">My Saved Recipe Collection</h2>
+      <p className="my-recipes__text-description">
+        Save recipes from the Community or add your own personal recipes using
+        the button below.
+      </p>
       <div className="my-recipes__button-set">
         <button
           className="my-recipes__button personal"
@@ -34,7 +39,7 @@ function MyRecipes({
         </button> */}
       </div>
 
-      <ul className="recipeCards__list-tiles">
+      <ul className="recipeCards__list-tiles myRecipes__card-container">
         {myRecipes.map((item) => {
           return (
             <RecipeCard
@@ -49,7 +54,7 @@ function MyRecipes({
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }
 

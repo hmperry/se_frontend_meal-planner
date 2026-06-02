@@ -1,7 +1,13 @@
 import { useState } from 'react';
-import ModalWithForm from '../ModalWithForm/modalWithForm';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import './registerModal.css';
 
-function RegisterModal({ isOpen, closeActiveModal, onRegister }) {
+function RegisterModal({
+  isOpen,
+  closeActiveModal,
+  onRegister,
+  onSwitchToSignIn,
+}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,17 +32,23 @@ function RegisterModal({ isOpen, closeActiveModal, onRegister }) {
     return Object.keys(newErrors).length === 0;
   };
 
+  const isFormValid = name.trim() && email.trim() && password.trim();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
 
-    onRegister({ name, email, password });
-
-    // Clear the form
-    setEmail('');
-    setPassword('');
-    setErrors({});
-    closeActiveModal();
+    onRegister({ name, email, password })
+      .then(() => {
+        setEmail('');
+        setPassword('');
+        setErrors({});
+        closeActiveModal(); // ✅ only closes on success
+      })
+      .catch((err) => {
+        console.error('Registration failed:', err);
+        // modal stays open, user can retry
+      });
   };
 
   return (
@@ -44,62 +56,73 @@ function RegisterModal({ isOpen, closeActiveModal, onRegister }) {
       title="Register"
       isOpen={isOpen}
       closeActiveModal={closeActiveModal}
+      onSubmit={handleSubmit}
     >
-      <form onSubmit={handleSubmit} className="registerModal__form">
-        <label className="registerModal__label">
-          Name
-          <input
-            type="text"
-            className="registerModal__input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {errors.name && <p className="registerModal__error">{errors.name}</p>}
-        </label>
+      <label className="registerModal__label">
+        <input
+          type="text"
+          className="registerModal__input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Username"
+        />
+        {errors.name && <p className="registerModal__error">{errors.name}</p>}
+      </label>
 
-        <label className="registerModal__label">
-          Email
-          <input
-            type="text"
-            className="registerModal__input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && (
-            <p className="registerModal__error">{errors.email}</p>
-          )}
-        </label>
+      <label className="registerModal__label">
+        <input
+          type="text"
+          className="registerModal__input"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        {errors.email && <p className="registerModal__error">{errors.email}</p>}
+      </label>
 
-        <label className="registerModal__label">
-          Password
-          <input
-            type="password"
-            className="registerModal__input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && (
-            <p className="registerModal__error">{errors.password}</p>
-          )}
-        </label>
+      <label className="registerModal__label">
+        <input
+          type="password"
+          className="registerModal__input"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        {errors.password && (
+          <p className="registerModal__error">{errors.password}</p>
+        )}
+      </label>
 
-        <label className="registerModal__label">
-          Confirm Password
-          <input
-            type="password"
-            className="registerModal__input"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          {errors.confirmPassword && (
-            <p className="registerModal__error">{errors.confirmPassword}</p>
-          )}
-        </label>
+      <label className="registerModal__label">
+        <input
+          type="password"
+          className="registerModal__input"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm Password"
+        />
+        {errors.confirmPassword && (
+          <p className="registerModal__error">{errors.confirmPassword}</p>
+        )}
+      </label>
 
-        <button type="submit" className="registerModal__submit">
+      <div className="registerModal__bottom-btns">
+        <button
+          type="submit"
+          className={`registerModal__submit ${isFormValid ? 'registerModal__submit_active' : ''}`}
+          disabled={!isFormValid}
+        >
           Register
         </button>
-      </form>
+
+        <button
+          type="button"
+          className="registerModal__signin"
+          onClick={onSwitchToSignIn}
+        >
+          or <span className="registerModal__signin-text">Sign In</span>
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

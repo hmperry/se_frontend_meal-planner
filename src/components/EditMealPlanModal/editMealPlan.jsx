@@ -3,10 +3,10 @@ import './editMealPlan.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext, useState } from 'react';
 
-import ModalWithForm from '../ModalWithForm/modalWithForm';
-import SearchForm from '../SearchForm/searchForm';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import SearchForm from '../SearchForm/SearchForm';
 
-import { defaultMeals } from '../../utils/dummyData';
+import { defaultMeals } from '../../utils/DummyData';
 import { DessertIcon } from 'lucide-react';
 
 import { getRecipeDetails } from '../../utils/FatSecretAPI';
@@ -80,7 +80,7 @@ function EditMealPlanModal({ isOpen, closeActiveModal }) {
         onChange={(e) => setSearch(e.target.value)}
         className="modal__input"
       />
-      <p>selectedRecipeId: {String(selectedRecipeId)}</p>
+
       <ul className="edit-meal__list">
         {filtered.map((recipe) => (
           <li

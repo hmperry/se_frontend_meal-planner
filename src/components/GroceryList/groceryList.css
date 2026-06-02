@@ -7,6 +7,19 @@
   text-align: left;
 }
 
+.grocery-list__title {
+  margin: 0;
+  padding: 15px 0 20px;
+  text-align: left;
+}
+
+.grocery-list__text-description {
+  margin: 0;
+  padding: 0 0 25px;
+  width: 70%;
+  text-align: left;
+}
+
 .grocery-list__table {
   /* padding-top: 8px; */
   margin-top: 15px;
@@ -26,7 +39,7 @@
   display: flex;
 }
 
-.grocery__table_checkbox {
+.grocery-list__table_checkbox {
   -webkit-appearance: none;
   appearance: none;
   width: 1.6em;
@@ -47,7 +60,7 @@
   position: relative;
 }
 
-.grocery__table-row {
+.grocery-list__table-row {
   padding: 10px 15px 8px;
   display: flex;
   align-items: center;
@@ -59,24 +72,24 @@
   border-left: 0.75px solid #009a00;
 }
 
-.grocery__table-row.checked {
+.grocery-list__table-row.checked {
   opacity: 0.5;
   background-color: #f5f5f5;
 }
 
-.grocery__table__check {
+.grocery-list__table__check {
   color: #ffffff;
   width: 40px;
   height: 40px;
   stroke-width: 4px;
 }
 
-.grocery__table_amount-col {
+.grocery-list__table_amount-col {
   text-align: center;
   flex: 1;
 }
 
-.grocery__amount-input {
+.grocery-list__amount-input {
   font-family: inherit;
   font-size: inherit;
   border: none;
@@ -86,33 +99,40 @@
   width: 100%;
 }
 
-.grocery__table_edit-col {
+.grocery-list__table_edit-col {
   text-align: right;
   flex: 1;
 }
 
 /* Left justify ingredient */
-.grocery__table_ingred-col {
+.grocery-list__table_ingred-col {
   text-align: left;
   flex: 2; /* Takes up more space */
 }
 
 /* Center the checkbox */
-.grocery__table_check-col {
+.grocery-list__table_check-col {
   text-align: center;
   flex: 0.5;
   justify-items: right;
   padding-right: 15px;
 }
 
-.grocery__plan-section {
+.grocery-list__plan-section {
   margin-bottom: 12px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
+  width: 85%;
+  min-width: 350px;
 }
 
-.grocery__plan-header {
+.grocery-list__empty {
+  padding: 0 0 0 15px;
+  text-align: center;
+}
+
+.grocery-list__plan-header {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -125,25 +145,25 @@
   transition: background 0.2s;
 }
 
-.grocery__plan-header:hover {
+.grocery-list__plan-header:hover {
   background: #eeeeee;
 }
 
-.grocery__plan-name {
+.grocery-list__plan-name {
   font-weight: 600;
   font-size: 0.95rem;
   flex: 1;
 }
 
-.grocery__plan-count {
+.grocery-list__plan-count {
   font-size: 0.8rem;
   color: #888;
 }
 
-.grocery__plan-chevron {
+.grocery-list__plan-chevron {
   transition: transform 0.2s;
 }
 
-.grocery__plan-chevron--open {
+.grocery-list__plan-chevron--open {
   transform: rotate(90deg);
 }

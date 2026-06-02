@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { Trash2, Heart, CirclePlus, CircleCheck } from 'lucide-react';
 
-import ModalWithForm from '../ModalWithForm/modalWithForm';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
 function AddRecipeModal({ isOpen, closeActiveModal }) {
   const { addToMyRecipes } = useContext(CurrentUserContext);
@@ -43,6 +43,20 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
     setRecipeDirections((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const resetForm = () => {
+    setRecipeName('');
+    setRecipeImage('');
+    setRecipeDescription('');
+    setRecipeIngredients(['']);
+    setRecipeDirections(['']);
+    setErrors({});
+  };
+
+  const handleCloseForm = () => {
+    resetForm();
+    closeActiveModal();
+  };
+
   const validate = () => {
     const newErrors = {};
     if (!recipeName.trim()) newErrors.recipeName = 'Recipe name is required';
@@ -54,6 +68,14 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  // Is form valid?
+  const isFormValid =
+    recipeName.trim() &&
+    recipeImage.trim() &&
+    recipeDescription.trim() &&
+    recipeIngredients.some((i) => i.trim()) &&
+    recipeDirections.some((d) => d.trim());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,16 +109,27 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
     };
 
     console.log('New recipe:', newRecipe); // ✅ check shape before saving
-    addToMyRecipes(newRecipe);
-    closeActiveModal();
+    addToMyRecipes(newRecipe)
+      .then(() => {
+        handleCloseForm();
+      })
+      .catch((err) => {
+        console.error('Failed to add recipe:', err);
+        // modal stays open, user can retry
+      });
   };
 
   return (
     <ModalWithForm
       title="Add Personal Recipe"
       isOpen={isOpen}
-      closeActiveModal={closeActiveModal}
+      closeActiveModal={handleCloseForm}
     >
+      <p className="addRecipeModal__form-description">
+        You may add personal recipes from other sources so that you can compile
+        your comprehensive meal plan and grocery list. This recipe will show in
+        your My Recipes collection.
+      </p>
       <form onSubmit={handleSubmit} className="addRecipeModal__form">
         <div className="addRecipe__container">
           <label
@@ -130,12 +163,12 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             className="addRecipeModal__label addRecipeModal__label_description"
           >
             Description
-            <textarea
+            <input
               id="addRecipe-description"
               required
               type="text"
               placeholder=""
-              className="addRecipeModal__textarea addRecipeModal__textarea_description"
+              className="addRecipeModal__input addRecipeModal__textarea_description"
               value={recipeDescription}
               onChange={(e) => setRecipeDescription(e.target.value)}
             />
@@ -175,8 +208,8 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             Directions
             {recipeDirections.map((direction, index) => (
               <div key={index} className="addRecipe__row">
-                <textarea
-                  className="addRecipeModal__textarea"
+                <input
+                  className="addRecipeModal__input"
                   placeholder={`Step ${index + 1}`}
                   value={direction}
                   onChange={(e) => updateDirection(index, e.target.value)}
@@ -196,7 +229,11 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             </button>
           </label>
 
-          <button type="submit" className="addRecipeModal__submit">
+          <button
+            type="submit"
+            className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit_active' : ''}`}
+            disabled={!isFormValid}
+          >
             Add Recipe
           </button>
         </div>

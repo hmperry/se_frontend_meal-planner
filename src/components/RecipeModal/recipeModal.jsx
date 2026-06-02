@@ -2,7 +2,7 @@ import '../RecipeModal/recipeModal.css';
 import '../RecipeCard/recipeCard.css';
 
 import { Trash2, Heart, X, CirclePlus, CircleCheck } from 'lucide-react';
-import Like from '../Like/like';
+import Like from '../Like/Like';
 import { useContext, useState } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
