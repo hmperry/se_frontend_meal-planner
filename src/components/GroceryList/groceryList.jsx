@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
-import PageHeading from '../PageHeading/pageHeading';
+import PageHeading from '../PageHeading/PageHeading';
 import { ChevronRight, Pencil, Check } from 'lucide-react';
 import './groceryList.css';
 
-import { defaultGroceryList } from '../../utils/dummyData';
-import { buildGroceryList } from '../../utils/buildGroceryList';
+import { defaultGroceryList } from '../../utils/DummyData';
+import { buildGroceryList } from '../../utils/BuildGroceryList';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 const Checkbox = ({ checked, onChange }) => {
@@ -116,21 +116,21 @@ function GroceryList({ isOpen, closeActiveModal }) {
                 created.
               </p>
 
-              <div key={plan.id} className="grocery__plan-section">
+              <div key={plan.id} className="grocery-list__plan-section">
                 {/* Plan header — click to expand/collapse */}
 
                 <button
-                  className="grocery__plan-header"
+                  className="grocery-list__plan-header"
                   onClick={() => togglePlan(plan.id)}
                 >
                   <ChevronRight
-                    className={`grocery__plan-chevron ${isExpanded ? 'grocery__plan-chevron--open' : ''}`}
+                    className={`grocery-list__plan-chevron ${isExpanded ? 'grocery-list__plan-chevron--open' : ''}`}
                     size={18}
                   />
-                  <span className="grocery__plan-name">
+                  <span className="grocery-list__plan-name">
                     {formatDateRange(plan.startDate, plan.endDate)}
                   </span>
-                  <span className="grocery__plan-count">
+                  <span className="grocery-list__plan-count">
                     {plan.days.filter((d) => d.recipe).length} meals
                   </span>
                 </button>
@@ -139,12 +139,14 @@ function GroceryList({ isOpen, closeActiveModal }) {
                 {isExpanded && (
                   <div className="grocery-list__table_border">
                     <div className="grocery-list__table">
-                      <div className="grocery__table-header grocery__table-row">
-                        <div className="grocery__table_check-col"></div>
-                        <div className="grocery__table_ingred-col">
+                      <div className="grocery-list__table-header grocery__table-row">
+                        <div className="grocery-list__table_check-col"></div>
+                        <div className="grocery-list__table_ingred-col">
                           Ingredient
                         </div>
-                        <div className="grocery__table_amount-col">Amount</div>
+                        <div className="grocery-list__table_amount-col">
+                          Amount
+                        </div>
                       </div>
                       {groceryList.length === 0 ? (
                         <p className="grocery-list__empty">
@@ -155,8 +157,11 @@ function GroceryList({ isOpen, closeActiveModal }) {
                           ({ ingredient, amount, checked }, index) => {
                             const key = `${plan.id}-${index}`;
                             return (
-                              <div className="grocery__table-row" key={index}>
-                                <div className="grocery__table_check-col">
+                              <div
+                                className="grocery-list__table-row"
+                                key={index}
+                              >
+                                <div className="grocery-list__table_check-col">
                                   <Checkbox
                                     checked={checked}
                                     onChange={() =>
@@ -164,13 +169,13 @@ function GroceryList({ isOpen, closeActiveModal }) {
                                     }
                                   />
                                 </div>
-                                <div className="grocery__table_ingred-col">
+                                <div className="grocery-list__table_ingred-col">
                                   {ingredient}
                                 </div>
-                                <div className="grocery__table_amount-col">
+                                <div className="grocery-list__table_amount-col">
                                   {editingKey === key ? (
                                     <input
-                                      className="grocery__amount-input"
+                                      className="grocery-list__amount-input"
                                       value={amount}
                                       onChange={(e) =>
                                         handleAmountChange(

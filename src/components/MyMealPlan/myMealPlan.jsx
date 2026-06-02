@@ -1,6 +1,6 @@
 import './myMealPlan.css';
 import '../App/App.css';
-import PageHeading from '../PageHeading/pageHeading';
+import PageHeading from '../PageHeading/PageHeading';
 import {
   Calendar,
   ChevronRight,
@@ -9,11 +9,11 @@ import {
   CircleCheck,
 } from 'lucide-react';
 import { useContext, useState, useEffect } from 'react';
-import { defaultMeals } from '../../utils/dummyData';
+import { defaultMeals } from '../../utils/DummyData';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-import EditMealPlanModal from '../EditMealPlanModal/editMealPlan';
+import EditMealPlanModal from '../EditMealPlanModal/EditMealPlan';
 import { getRecipeDetails } from '../../utils/FatSecretAPI';
-import Presaver from '../Presaver/presaver';
+import Presaver from '../Presaver/Presaver';
 
 function MyMealPlan() {
   const {
@@ -153,7 +153,7 @@ function MyMealPlan() {
     setSavedPlans((prev) => prev.filter((p) => p.id !== planId));
   };
   return (
-    <section className="mealPlan__layout">
+    <section className="mealPlan">
       <div className="mealPlan__wrapper">
         <h2 className="mealPlan__title">Plan a Custom Meal Plan</h2>
         <p className="mealPlan__text-description">

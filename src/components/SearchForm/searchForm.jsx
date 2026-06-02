@@ -7,21 +7,23 @@ function SearchForm({
   onSearch,
   placeholder = 'Search...',
 }) {
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      onSearch();
-    }
-  };
   return (
     <div className="searchForm">
-      <input
-        type="text"
-        className="searchForm__input community-recipes__search-input"
-        placeholder={placeholder}
-        value={searchQuery}
-        onChange={(e) => onSearchChange(e.target.value)}
-        // onKeyDown={handleKeyDown}
-      />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSearch();
+        }}
+      >
+        <input
+          type="text"
+          className="searchForm__input community-recipes__search-input"
+          placeholder={placeholder}
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 }

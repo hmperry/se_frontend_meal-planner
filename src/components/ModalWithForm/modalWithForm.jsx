@@ -2,7 +2,13 @@ import '../ModalWithForm/modalWithForm.css';
 
 import { X } from 'lucide-react';
 
-function ModalWithForm({ closeActiveModal, children, isOpen, title }) {
+function ModalWithForm({
+  closeActiveModal,
+  children,
+  isOpen,
+  title,
+  onSubmit,
+}) {
   return (
     <div
       onClick={closeActiveModal}
@@ -16,7 +22,7 @@ function ModalWithForm({ closeActiveModal, children, isOpen, title }) {
         ></button>
 
         <h2 className="modal__title">{title}</h2>
-        {children}
+        <form onSubmit={onSubmit}>{children}</form>
       </div>
     </div>
   );

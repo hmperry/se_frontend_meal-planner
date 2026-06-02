@@ -3,16 +3,16 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
-import Header from '../Header/header';
-import Main from '../Main/main';
-import Navigation from '../Navigation/navigation';
-import Footer from '../Footer/footer';
-import RecipeModal from '../RecipeModal/recipeModal';
+import Header from '../Header/Header.jsx';
+import Main from '../Main/Main.jsx';
+import Navigation from '../Navigation/Navigation.jsx';
+import Footer from '../Footer/Footer.jsx';
+import RecipeModal from '../RecipeModal/RecipeModal.jsx';
 import AddRecipeModal from '../AddRecipeModal/AddRecipeModal';
-import EditMealPlanModal from '../EditMealPlanModal/editMealPlan';
-import EditGroceryModal from '../GroceryList/editGroceryModal';
-import LoginModal from '../LoginModal/loginModal';
-import RegisterModal from '../RegisterModal/registerModal';
+import EditMealPlanModal from '../EditMealPlanModal/EditMealPlan.jsx';
+import EditGroceryModal from '../GroceryList/EditGroceryModal.jsx';
+import LoginModal from '../LoginModal/LoginModal.jsx';
+import RegisterModal from '../RegisterModal/RegisterModal.jsx';
 import { getRecipeDetails, getRecipes } from '../../utils/FatSecretAPI.js';
 
 function App() {
@@ -40,8 +40,18 @@ function App() {
   }, [myRecipes]);
 
   const addToMyRecipes = (recipe) => {
-    if (myRecipes.some((r) => r.id === recipe.id)) return;
-    setMyRecipes((prev) => [...prev, recipe]);
+    return new Promise((resolve, reject) => {
+      try {
+        if (myRecipes.some((r) => r.id === recipe.id)) {
+          reject(new Error('Recipe already exists'));
+          return;
+        }
+        setMyRecipes((prev) => [...prev, recipe]);
+        resolve();
+      } catch (err) {
+        reject(err);
+      }
+    });
   };
 
   //For deleting recipes from My Recipes
@@ -130,21 +140,31 @@ function App() {
 
   // handleLogin
   const handleLogin = ({ email, password }) => {
-    // mock auth for stage 1
-    setCurrentUser({ name: 'TEST_USER', email });
+    return new Promise((resolve, reject) => {
+      try {
+        setCurrentUser({ name: 'TEST_USER', email });
+        resolve();
+      } catch (err) {
+        reject(err);
+      }
+    });
   };
 
   const handleRegister = ({ name, email, password }) => {
-    // mock register for stage 1
-    setCurrentUser({ name, email });
+    return new Promise((resolve, reject) => {
+      try {
+        setCurrentUser({ name, email });
+        resolve();
+      } catch (err) {
+        reject(err);
+      }
+    });
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
-    setActiveModal('');
+    closeActiveModal();
   };
-
-  
 
   return (
     <CurrentUserContext.Provider

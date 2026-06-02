@@ -2,7 +2,7 @@ import './Navigation.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext } from 'react';
-import { NavData } from './navData';
+import { NavData } from './NavData';
 
 function Navigation() {
   const location = useLocation();
@@ -14,7 +14,7 @@ function Navigation() {
   if (!currentUser) return null;
 
   return (
-    <div className="Navigation">
+    <nav className="Navigation">
       <ul className="nav__bar">
         {visibleNav.map((val, key) => {
           return (
@@ -36,7 +36,7 @@ function Navigation() {
           );
         })}
       </ul>
-    </div>
+    </nav>
     //
   );
 }

@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { Trash2, Heart, CirclePlus, CircleCheck } from 'lucide-react';
 
-import ModalWithForm from '../ModalWithForm/modalWithForm';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
 function AddRecipeModal({ isOpen, closeActiveModal }) {
   const { addToMyRecipes } = useContext(CurrentUserContext);
@@ -44,19 +44,18 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
   };
 
   const resetForm = () => {
-  setRecipeName('');
-  setRecipeImage('');
-  setRecipeDescription('');
-  setRecipeIngredients(['']);
-  setRecipeDirections(['']);
-  setErrors({});
-};
+    setRecipeName('');
+    setRecipeImage('');
+    setRecipeDescription('');
+    setRecipeIngredients(['']);
+    setRecipeDirections(['']);
+    setErrors({});
+  };
 
-const handleCloseForm = () => {
-  resetForm();
-  closeActiveModal();
-};
-
+  const handleCloseForm = () => {
+    resetForm();
+    closeActiveModal();
+  };
 
   const validate = () => {
     const newErrors = {};
@@ -72,11 +71,11 @@ const handleCloseForm = () => {
 
   // Is form valid?
   const isFormValid =
-  recipeName.trim() &&
-  recipeImage.trim() &&
-  recipeDescription.trim() &&
-  recipeIngredients.some((i) => i.trim()) &&
-  recipeDirections.some((d) => d.trim());
+    recipeName.trim() &&
+    recipeImage.trim() &&
+    recipeDescription.trim() &&
+    recipeIngredients.some((i) => i.trim()) &&
+    recipeDirections.some((d) => d.trim());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -110,8 +109,14 @@ const handleCloseForm = () => {
     };
 
     console.log('New recipe:', newRecipe); // ✅ check shape before saving
-    addToMyRecipes(newRecipe);
-    handleCloseForm();
+    addToMyRecipes(newRecipe)
+      .then(() => {
+        handleCloseForm();
+      })
+      .catch((err) => {
+        console.error('Failed to add recipe:', err);
+        // modal stays open, user can retry
+      });
   };
 
   return (
@@ -224,7 +229,11 @@ const handleCloseForm = () => {
             </button>
           </label>
 
-          <button type="submit" className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit_active' : ''}`} disabled={!isFormValid}>
+          <button
+            type="submit"
+            className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit_active' : ''}`}
+            disabled={!isFormValid}
+          >
             Add Recipe
           </button>
         </div>

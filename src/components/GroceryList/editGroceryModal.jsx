@@ -2,7 +2,7 @@ import './editGroceryModal.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext, useState } from 'react';
 
-import ModalWithForm from '../ModalWithForm/modalWithForm';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
 function editGroceryModal({ isOpen, closeActiveModal }) {
   return (

@@ -29,6 +29,7 @@
   justify-content: center;
   flex-direction: column;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 /* .recipeCard__no-like { */
@@ -81,6 +82,7 @@
 
 .recipeCard__image {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   overflow: hidden;
 }

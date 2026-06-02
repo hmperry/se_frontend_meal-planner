@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 
-import PageHeading from '../PageHeading/pageHeading';
-import RecipeCard from '../RecipeCard/recipeCard';
-import SearchForm from '../SearchForm/searchForm';
-import { defaultMeals } from '../../utils/dummyData';
+import PageHeading from '../PageHeading/PageHeading.jsx';
+import RecipeCard from '../RecipeCard/RecipeCard.jsx';
+import SearchForm from '../SearchForm/SearchForm.jsx';
+import { defaultMeals } from '../../utils/DummyData.js';
 import { getRecipes, getDinners } from '../../utils/FatSecretAPI.js';
 
 import './communityRecipes.css';
-import RecipeListItem from '../RecipeListItem/recipeListItem';
-import ViewToggle from '../ViewToggle/viewToggle';
+import RecipeListItem from '../RecipeListItem/RecipeListItem.jsx';
+import ViewToggle from '../ViewToggle/ViewToggle.jsx';
 
-import CurrentUserContext from '../../contexts/CurrentUserContext';
-import Preloader from '../Preloader/preloader.jsx';
+import CurrentUserContext from '../../contexts/CurrentUserContext.js';
+import Preloader from '../Preloader/Preloader.jsx';
 
 function CommunityRecipes({ handleCardClick }) {
   const [viewType, setViewType] = useState('cards');

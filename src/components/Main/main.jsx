@@ -3,10 +3,11 @@ import './Main.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import MyMealPlan from '../MyMealPlan/myMealPlan';
-import GroceryList from '../GroceryList/groceryList';
-import CommunityRecipes from '../CommunityRecipes/communityRecipes';
-import MyRecipes from '../MyRecipes/myRecipes';
+import MyMealPlan from '../MyMealPlan/MyMealPlan';
+import GroceryList from '../GroceryList/GroceryList';
+import CommunityRecipes from '../CommunityRecipes/CommunityRecipes';
+import MyRecipes from '../MyRecipes/MyRecipes';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function Main({
   handleCardClick,
@@ -17,21 +18,37 @@ function Main({
   return (
     <section className="main">
       <Routes>
-        <Route path="/grocerylist" element={<GroceryList />}></Route>
+        <Route
+          path="/grocerylist"
+          element={
+            <ProtectedRoute>
+              <GroceryList />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route
           path="/"
           element={<CommunityRecipes handleCardClick={handleCardClick} />}
         ></Route>
-        <Route path="/mealplan" element={<MyMealPlan />}></Route>
+        <Route
+          path="/mealplan"
+          element={
+            <ProtectedRoute>
+              <MyMealPlan />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route
           path="/myrecipes"
           element={
-            <MyRecipes
-              handleCardClick={handleCardClick}
-              closeActiveModal={closeActiveModal}
-              handleLikeClick={handleLikeClick}
-              likedCards={likedCards}
-            />
+            <ProtectedRoute>
+              <MyRecipes
+                handleCardClick={handleCardClick}
+                closeActiveModal={closeActiveModal}
+                handleLikeClick={handleLikeClick}
+                likedCards={likedCards}
+              />
+            </ProtectedRoute>
           }
         ></Route>
       </Routes>
