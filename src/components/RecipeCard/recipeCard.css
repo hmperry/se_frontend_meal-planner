@@ -30,6 +30,11 @@
   flex-direction: column;
   border-radius: 8px;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.recipeCard__tile:hover {
+  transform: scale(1.02);
 }
 
 /* .recipeCard__no-like { */

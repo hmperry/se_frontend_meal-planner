@@ -38,6 +38,20 @@
   font-weight: 500;
   color: #fff;
   cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s,
+    border-radius 0.2s,
+    color 0.2s;
+}
+
+.header__button:hover {
+  background: rgba(0, 154, 0, 0.5);
+  color: #111111;
+  transform: translateY(-1px);
+  border-radius: 5px;
+  box-shadow: 0 0 0 6px rgba(0, 154, 0, 0.5);
 }
 
 .header__greeting {
@@ -98,6 +112,18 @@
     border-radius: 6px;
     border: none;
     flex-shrink: 0;
+    transition:
+      background 0.2s,
+      transform 0.15s,
+      box-shadow 0.2s,
+      border-radius 0.2s,
+      color 0.2s;
+  }
+
+  .header__menu:hover {
+    color: #111111;
+    transform: translateY(-1px);
+    border-radius: 5px;
   }
 }
 
