@@ -17,6 +17,7 @@
   margin: 0;
   padding: 0 0 25px;
   width: 70%;
+  min-width: 250px;
   text-align: left;
 }
 
@@ -39,7 +40,7 @@
   display: flex;
 }
 
-.grocery-list__table_checkbox {
+.grocery-list__table-checkbox {
   -webkit-appearance: none;
   appearance: none;
   width: 1.6em;
@@ -77,14 +78,14 @@
   background-color: #f5f5f5;
 }
 
-.grocery-list__table__check {
+.grocery-list__table-check {
   color: #ffffff;
   width: 40px;
   height: 40px;
   stroke-width: 4px;
 }
 
-.grocery-list__table_amount-col {
+.grocery-list__table-amount-col {
   text-align: center;
   flex: 1;
 }
@@ -105,13 +106,13 @@
 }
 
 /* Left justify ingredient */
-.grocery-list__table_ingred-col {
+.grocery-list__table-ingred-col {
   text-align: left;
   flex: 2; /* Takes up more space */
 }
 
 /* Center the checkbox */
-.grocery-list__table_check-col {
+.grocery-list__table-check-col {
   text-align: center;
   flex: 0.5;
   justify-items: right;
@@ -124,7 +125,7 @@
   border-radius: 10px;
   overflow: hidden;
   width: 85%;
-  min-width: 350px;
+  min-width: 250px;
 }
 
 .grocery-list__empty {

@@ -27,19 +27,15 @@ function MyRecipes({
       </p>
       <div className="my-recipes__button-set">
         <button
-          className="my-recipes__button personal"
+          className="my-recipes__button my-recipes__button--personal"
           onClick={openAddRecipeModal}
         >
-          <SquarePen className="my-recipes__button_icon " />
+          <SquarePen className="my-recipes__button-icon " />
           Add Personal Recipes
         </button>
-        {/* <button className="my-recipes__button circle">
-          <CirclePlus className="my-recipes__button_icon " />
-          Add Community Recipes
-        </button> */}
       </div>
 
-      <ul className="recipeCards__list-tiles myRecipes__card-container">
+      <ul className="my-recipes__cards--tiles my-recipes__card-container">
         {myRecipes.map((item) => {
           return (
             <RecipeCard
@@ -47,8 +43,6 @@ function MyRecipes({
               item={item}
               onCardClick={handleCardClick}
               onCloseClick={closeActiveModal}
-              // onLikeClick={handleLikeClick}
-              // likedCards={likedCards}
               appPageVariant="myRecipes"
             />
           );

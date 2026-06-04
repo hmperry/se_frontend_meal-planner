@@ -20,8 +20,9 @@
   visibility: visible;
 }
 
-.modal__title{
+.modal__title {
   font-size: 32px;
+  line-height: 1.2;
   padding: 0;
   margin-left: 0 auto;
 }
@@ -53,14 +54,12 @@
   flex-direction: column;
   padding: 10px 25px 10px;
   box-sizing: border-box;
-  min-width: 400px;
+  min-width: 85%;
   overflow-y: auto;
 }
 
 @media screen and (max-width: 650px) {
   .modal__preview {
     /* width: 95%; */
-    
-    
   }
 }

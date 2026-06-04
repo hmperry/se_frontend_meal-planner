@@ -141,10 +141,10 @@ function CommunityRecipes({ handleCardClick }) {
         </>
       ) : (
         <>
-          <h2 className="community-recipes__title__no-user">
+          <h2 className="community-recipes__title--no-user">
             Make meal planning less of a struggle.
           </h2>
-          <p className="community-recipes__text-description__no-user">
+          <p className="community-recipes__text-description--no-user">
             Sign in to save recipes, create meal plans, and build shopping lists
             so you're prepared when people ask <em>What's for dinner?</em>
           </p>
@@ -162,7 +162,7 @@ function CommunityRecipes({ handleCardClick }) {
       {error && <p className="community-recipes__status">{error}</p>}
 
       {viewType === 'cards' ? (
-        <ul className="recipeCards__list-tiles">
+        <ul className="community-recipes__cards--tiles">
           {communityRecipes.map((item) => {
             return (
               <RecipeCard
@@ -175,7 +175,7 @@ function CommunityRecipes({ handleCardClick }) {
           })}
         </ul>
       ) : (
-        <ul className="recipeCards__list-list">
+        <ul className="community-recipes__cards-list">
           {communityRecipes.map((item) => {
             return <RecipeListItem key={item.id} item={item} />;
           })}

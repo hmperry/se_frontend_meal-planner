@@ -168,7 +168,7 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
               required
               type="text"
               placeholder=""
-              className="addRecipeModal__input addRecipeModal__textarea_description"
+              className="addRecipeModal__input addRecipeModal__textarea-description"
               value={recipeDescription}
               onChange={(e) => setRecipeDescription(e.target.value)}
             />
@@ -231,7 +231,7 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
 
           <button
             type="submit"
-            className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit_active' : ''}`}
+            className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit--active' : ''}`}
             disabled={!isFormValid}
           >
             Add Recipe

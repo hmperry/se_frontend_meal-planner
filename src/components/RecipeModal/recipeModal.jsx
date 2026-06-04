@@ -46,7 +46,7 @@ function RecipeModal({
                 }}
               />
               <Trash2
-                className="recipeModal__delete"
+                className="recipeModal__delete-btn"
                 onClick={(e) => {
                   e.stopPropagation();
                   deleteFromMyRecipes(selectedCard);
@@ -66,7 +66,7 @@ function RecipeModal({
               onMouseLeave={() => setTooltip({ visible: false, x: 0, y: 0 })}
             >
               <CirclePlus
-                className="recipeModal__top-icon recipeModal__add"
+                className="recipeModal__top-icon recipeModal__add-btn"
                 onClick={(e) => {
                   e.stopPropagation();
                   addToMyRecipes(selectedCard);

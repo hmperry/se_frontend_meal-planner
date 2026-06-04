@@ -5,20 +5,6 @@
   padding: 10px 0 8px 5px;
 }
 
-/* .addRecipeModal__label_name {
-  flex-direction: row;
-}
-
-.addRecipeModal__label_description {
-  flex-direction: row;
-} */
-
-/* .addRecipeModal__label_ingredients {
-}
-
-.addRecipeModal__label_instructions {
-} */
-
 .addRecipeModal__form-description {
   width: 85%;
   padding: 0 0 15px 0;
@@ -30,17 +16,17 @@
   width: 85%;
   height: 25px;
   padding: 3px 3px 3px 10px;
-  border: 1px solid #CFCFCF;
-    border-radius: 25px;
-    font-size: 16px;
-    line-height: 20px;
-    padding: 20px 24px;
-    /* width: 400px; */
-    width: clamp(200px, 100%, 400px);
+  border: 1px solid #cfcfcf;
+  border-radius: 25px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 20px 24px;
+  /* width: 400px; */
+  width: clamp(200px, 100%, 400px);
   font-size: clamp(12px, 16px, 16px);
   /* padding: clamp(6px, 12px, 12px); */
-    align-self: flex-start;
-    box-sizing: border-box;
+  align-self: flex-start;
+  box-sizing: border-box;
 }
 
 .addRecipeModal__textarea {
@@ -50,26 +36,27 @@
   padding: 3px 3px 3px 10px;
 }
 
-.addRecipeModal__textarea_description {
+.addRecipeModal__textarea-description {
   height: 50px;
 }
 
 .addRecipeModal__submit {
   margin: 10px 0 8px 5px;
   width: 50%;
+  min-width: 160px;
   background-color: #ccc;
   color: #fff;
   font-weight: 900;
   padding: 18px 32px;
   align-self: flex-start;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #cfcfcf;
   border-radius: 25px;
   font-size: 16px;
   line-height: 20px;
   cursor: not-allowed;
 }
 
-.addRecipeModal__submit_active{
+.addRecipeModal__submit--active {
   background-color: #009a00cb;
   cursor: pointer;
 }
