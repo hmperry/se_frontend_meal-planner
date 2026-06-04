@@ -21,7 +21,7 @@
 }
 
 .modal__title {
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.2;
   padding: 0;
   margin-left: 0 auto;
@@ -45,7 +45,7 @@
   background-color: rgba(255, 255, 255, 1);
   border: none;
   border-radius: 16px;
-  max-width: 650px;
+
   height: auto;
   max-height: 90vh;
   top: 50px;
@@ -54,7 +54,9 @@
   flex-direction: column;
   padding: 10px 25px 10px;
   box-sizing: border-box;
-  min-width: 85%;
+  /* min-width: 85%; */
+  /* max-width: 85%; */
+  max-width: 650px;
   overflow-y: auto;
 }
 

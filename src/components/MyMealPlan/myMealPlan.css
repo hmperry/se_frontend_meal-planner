@@ -412,6 +412,10 @@
   display: none;
 }
 
+.mealPlan__sidebar-close {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
   .mealPlan__sidebar {
     display: none;
@@ -478,15 +482,15 @@
     margin: 0 auto;
     padding: 0 10px;
   }
+}
 
-  @media screen and (max-width: 540px) {
-    .mealPlan__save-bar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+@media screen and (max-width: 540px) {
+  .mealPlan__save-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .mealPlan__sidebar-toggle {
-      margin: 12px 0px;
-    }
+  .mealPlan__sidebar-toggle {
+    margin: 12px 0px;
   }
 }
