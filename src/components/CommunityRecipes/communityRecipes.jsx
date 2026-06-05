@@ -95,7 +95,7 @@ function CommunityRecipes({ handleCardClick }) {
     setIsLoading(true);
     getDinners()
       .then((data) => {
-        console.log('Full API response:', JSON.stringify(data, null, 2));
+        // console.log('Full API response:', JSON.stringify(data, null, 2));
         setCommunityRecipes(data.results || []);
       })
       .catch((err) => {
@@ -115,7 +115,7 @@ function CommunityRecipes({ handleCardClick }) {
       setIsLoading(true);
       getRecipes(communitySearchQuery)
         .then((data) => {
-          console.log('total recipes:', data.totalResults);
+          // console.log('total recipes:', data.totalResults);
           console.log('recipes returned:', data.results?.length);
           setCommunityRecipes(data.results || []);
         })
