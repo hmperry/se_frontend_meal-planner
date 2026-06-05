@@ -14,7 +14,7 @@ function Navigation() {
   if (!currentUser) return null;
 
   return (
-    <nav className="nav">
+    <nav className="Navigation">
       <ul className="nav__bar">
         {visibleNav.map((val, key) => {
           return (

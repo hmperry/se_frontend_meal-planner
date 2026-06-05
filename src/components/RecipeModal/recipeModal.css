@@ -126,14 +126,14 @@
   padding: 5px;
 }
 
-.recipeModal__add-btn {
+.recipeModal__add {
   cursor: pointer;
   transition:
     transform 0.2s ease,
     color 0.2s ease;
 }
 
-.recipeModal__add-btn:hover {
+.recipeModal__add:hover {
   transform: scale(1.2); /* ✅ grows on hover */
   color: #8ff365;
 }
@@ -156,7 +156,7 @@
   z-index: 9999;
 }
 
-.recipeModal__delete-btn {
+.recipeModal__delete {
   color: #000;
   /* position: absolute;
   right: 10px;
@@ -169,7 +169,7 @@
   cursor: pointer;
 }
 
-.recipeModal__delete-btn:hover ~ .recipeModal__image {
+.recipeModal__delete:hover ~ .recipeModal__image {
   filter: brightness(0.5);
 }
 

@@ -22,9 +22,7 @@ function SearchForm({
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
         />
-        <button type="submit" className="searchForm__btn">
-          Search
-        </button>
+        <button type="submit">Search</button>
       </form>
     </div>
   );

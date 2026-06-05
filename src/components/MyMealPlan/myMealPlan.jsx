@@ -146,7 +146,6 @@ function MyMealPlan() {
     setEndDate(plan.endDate.slice(0, 10));
     setActivePlanId(plan.id);
     setExpandedId(null);
-    setSidebarOpen(false);
   };
 
   const handleDeletePlan = (planId, e) => {
@@ -156,9 +155,7 @@ function MyMealPlan() {
   return (
     <section className="mealPlan">
       <div className="mealPlan__wrapper">
-        <h2 className="mealPlan__title">
-          Plan a Custom <br class="mealPlan__mobile-break"></br>Meal Plan
-        </h2>
+        <h2 className="mealPlan__title">Plan a Custom Meal Plan</h2>
         <p className="mealPlan__text-description">
           You choose how many days to plan. You choose which meals based on your
           saved meals from your recipe collection. Then use the Grocery List to
@@ -257,15 +254,15 @@ function MyMealPlan() {
                       'expanded day object:',
                       JSON.stringify(day, null, 2)
                     )}
-                    <div className="mealPlan__expanded-left-col">
-                      <div className="mealPlan__expanded-img-container">
+                    <div className="mealPlan__expanded_left-col">
+                      <div className="mealPlan__expanded_img-container">
                         <img
                           src={day.link}
                           alt={day.recipe}
-                          className="mealPlan__expanded-image"
+                          className="mealPlan__expanded_image"
                         />
                       </div>
-                      <div className="mealPlan__expanded-ingredients">
+                      <div className="mealPlan__expanded_ingredients">
                         {Array.isArray(day.ingredients)
                           ? day.ingredients.map((item, index) => (
                               <p key={index}>{item.original || item.name}</p>
@@ -274,18 +271,18 @@ function MyMealPlan() {
                       </div>
                     </div>
 
-                    <div className="mealPlan__expanded-text-info">
-                      <h4 className="mealPlan__expanded-subhead">
+                    <div className="mealPlan__expanded_text-info">
+                      <h4 className="mealPlan__expanded_subhead">
                         Description
                       </h4>
                       <p
-                        className="mealPlan__expanded-description"
+                        className="mealPlan__expanded_description"
                         dangerouslySetInnerHTML={{ __html: day.description }}
                       />
-                      <h4 className="mealPlan__expanded-subhead">
+                      <h4 className="mealPlan__expanded_subhead">
                         Instructions
                       </h4>
-                      <div className="mealPlan__expanded-instructions">
+                      <div className="mealPlan__expanded_instructions">
                         {Array.isArray(day.directions)
                           ? day.directions.map((step, index) => (
                               <p key={index}>
@@ -302,21 +299,9 @@ function MyMealPlan() {
           )}
         </div>
       </div>
-      {sidebarOpen && (
-        <div
-          className="mealPlan__sidebar-backdrop"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
       <aside
         className={`mealPlan__sidebar ${sidebarOpen ? 'mealPlan__sidebar--open' : ''}`}
       >
-        <button
-          className="mealPlan__sidebar-close"
-          onClick={() => setSidebarOpen(false)}
-        >
-          ×
-        </button>
         <h2 className="mealPlan__sidebar-title">
           <Calendar size={16} />
           Saved Plans
@@ -335,6 +320,9 @@ function MyMealPlan() {
                   onClick={() => handleLoadPlan(plan)}
                   title={`Load "${plan.name}"`}
                 >
+                  {/* <span className="mealPlan__sidebar-plan-name">
+                    {plan.name}
+                  </span> */}
                   <span className="mealPlan__sidebar-plan-range">
                     {formatDateRange(plan.startDate, plan.endDate)}
                   </span>
@@ -356,6 +344,7 @@ function MyMealPlan() {
         )}
       </aside>
     </section>
+    // </div>
   );
 }
 

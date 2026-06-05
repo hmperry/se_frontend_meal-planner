@@ -56,7 +56,7 @@ function RecipeCard({
                 onMouseLeave={() => setTooltip({ visible: false, x: 0, y: 0 })}
               >
                 <CirclePlus
-                  className="recipeCard__top-icon recipeCard__add-btn"
+                  className="recipeCard__top-icon recipeCard__add"
                   onClick={(e) => {
                     e.stopPropagation();
                     addToMyRecipes(item);
@@ -84,7 +84,7 @@ function RecipeCard({
 
         {appPageVariant === 'myRecipes' ? (
           <Trash2
-            className="recipeCard__delete-btn"
+            className="recipeCard__delete"
             onClick={(e) => {
               e.stopPropagation();
               deleteFromMyRecipes(item);
