@@ -7,7 +7,6 @@
   min-height: 100%;
 
   margin: 0 auto;
-  /* align-items: center; */
   width: 80%;
   flex: 1;
   max-width: 1360px;
@@ -104,7 +103,6 @@
   width: 33%;
   flex-shrink: 0;
   min-width: 33%;
-  /* overflow: hidden; */
 }
 .mealPlan__expanded-img-container {
   width: 100%;
@@ -241,9 +239,9 @@
   width: 200px;
   flex-shrink: 0;
   position: sticky;
-  top: 24px; /* sticks while page scrolls */
+  top: 24px;
   align-self: flex-start;
-  background: #f9f9f9; /* adjust to your theme */
+  background: #f9f9f9;
   border-left: 1px solid #e0e0e0;
   padding: 24px 16px;
   min-height: 200px;
@@ -279,7 +277,7 @@
   align-items: center;
   gap: 7px;
   padding: 9px 18px;
-  background: #2e7d32; /* adjust to match your brand */
+  background: #2e7d32;
   color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
@@ -300,9 +298,7 @@
   background: #1b5e20;
   transition: background 0.3s;
 }
-/* ─────────────────────────────────────────
-   SAVED PLAN LIST
-───────────────────────────────────────── */
+
 .mealPlan__sidebar-list {
   list-style: none;
   padding: 0;
@@ -354,9 +350,6 @@
 }
 
 .mealPlan__sidebar-plan-range {
-  /* font-size: 0.75rem;
-  color: #2e7d32;
-  font-weight: 500; */
   font-size: 0.88rem;
   font-weight: 600;
   color: #222;
@@ -420,9 +413,9 @@
   .mealPlan__sidebar {
     display: none;
     position: fixed;
-    top: 120px; /* clears header + nav */
+    top: 120px;
     right: 0;
-    height: auto; /* CHANGE from 100% */
+    height: auto;
     max-height: calc(100vh - 120px);
     width: 260px;
     z-index: 999;
@@ -436,7 +429,7 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
-    z-index: 998; /* just below sidebar's 999 */
+    z-index: 998;
   }
 
   .mealPlan__sidebar-close {
