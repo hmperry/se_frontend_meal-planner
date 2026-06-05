@@ -102,10 +102,10 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
             .filter((d) => d.trim())
             .map((d, index) => ({
               number: index + 1,
-              step: d, // ← was direction_description
+              step: d,
             })),
         },
-      ], // ← was recipe_directions.direction[]
+      ],
     };
 
     console.log('New recipe:', newRecipe); // ✅ check shape before saving
@@ -115,7 +115,6 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
       })
       .catch((err) => {
         console.error('Failed to add recipe:', err);
-        // modal stays open, user can retry
       });
   };
 
