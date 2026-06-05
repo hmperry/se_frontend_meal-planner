@@ -5,7 +5,7 @@
   align-items: center;
   width: 88%;
   max-width: 1360px;
-  min-width: 0px;
+  min-width: 450px;
   padding-bottom: 20px;
 }
 
@@ -13,32 +13,32 @@
   margin: 0;
   padding: 35px 0 15px;
   text-align: center;
-  width: 90%;
+  width: 60%;
   max-width: 500px;
 }
 
 .community-recipes__text-description {
   margin: 0;
   padding: 0 0 15px;
-  width: 90%;
+  width: 70%;
   text-align: left;
   max-width: 400px;
 }
 
-.community-recipes__title--no-user {
+.community-recipes__title__no-user {
   margin: 0;
   padding: 35px 0 30px;
   text-align: left;
-  width: 90%;
+  width: 70%;
   font-size: 36px;
   max-width: 450px;
   line-height: 1.4;
 }
 
-.community-recipes__text-description--no-user {
+.community-recipes__text-description__no-user {
   margin: 0;
   padding: 0 0 15px;
-  width: 90%;
+  width: 70%;
   text-align: left;
   line-height: 1.4;
   max-width: 450px;
@@ -56,7 +56,7 @@
 .community-recipes__search {
   padding: 20px 0;
   align-self: left;
-  width: 90%;
+  width: 75%;
   max-width: 400px;
 }
 
@@ -91,33 +91,12 @@
   background: #007500;
 }
 
-.community-recipes__cards--tiles {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 15px;
-  column-gap: 15px;
-  width: 100%;
-  padding: 10px 0 0 0;
-  margin: 0;
-  justify-content: center;
-}
-
-.community-recipes__cards--list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* row-gap: 15px; */
-  /* column-gap: 15px; */
-  width: 88%;
-  padding: 0;
-}
-
 @media screen and (max-width: 550px) {
   .community-recipes__top-info {
     width: 100%; /* ✅ full width on small screens */
   }
 
-  .community-recipes__cards--tiles {
+  .recipeCards__list-tiles {
     width: 100%;
     column-gap: 0;
   }

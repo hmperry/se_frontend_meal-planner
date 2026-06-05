@@ -2,7 +2,7 @@
   padding-top: 100px;
 }
 
-.preloader__circle {
+.circle-preloader {
   display: block;
   width: 75px;
   height: 75px;
@@ -24,7 +24,7 @@
   }
 }
 
-.preloader__text {
+.preloader-text {
   padding-top: 50px;
   font-size: 14px;
   color: #444;

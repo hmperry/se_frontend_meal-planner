@@ -95,7 +95,7 @@ function CommunityRecipes({ handleCardClick }) {
     setIsLoading(true);
     getDinners()
       .then((data) => {
-        // console.log('Full API response:', JSON.stringify(data, null, 2));
+        console.log('Full API response:', JSON.stringify(data, null, 2));
         setCommunityRecipes(data.results || []);
       })
       .catch((err) => {
@@ -115,7 +115,7 @@ function CommunityRecipes({ handleCardClick }) {
       setIsLoading(true);
       getRecipes(communitySearchQuery)
         .then((data) => {
-          // console.log('total recipes:', data.totalResults);
+          console.log('total recipes:', data.totalResults);
           console.log('recipes returned:', data.results?.length);
           setCommunityRecipes(data.results || []);
         })
@@ -141,10 +141,10 @@ function CommunityRecipes({ handleCardClick }) {
         </>
       ) : (
         <>
-          <h2 className="community-recipes__title--no-user">
+          <h2 className="community-recipes__title__no-user">
             Make meal planning less of a struggle.
           </h2>
-          <p className="community-recipes__text-description--no-user">
+          <p className="community-recipes__text-description__no-user">
             Sign in to save recipes, create meal plans, and build shopping lists
             so you're prepared when people ask <em>What's for dinner?</em>
           </p>
@@ -162,7 +162,7 @@ function CommunityRecipes({ handleCardClick }) {
       {error && <p className="community-recipes__status">{error}</p>}
 
       {viewType === 'cards' ? (
-        <ul className="community-recipes__cards--tiles">
+        <ul className="recipeCards__list-tiles">
           {communityRecipes.map((item) => {
             return (
               <RecipeCard
@@ -175,7 +175,7 @@ function CommunityRecipes({ handleCardClick }) {
           })}
         </ul>
       ) : (
-        <ul className="community-recipes__cards-list">
+        <ul className="recipeCards__list-list">
           {communityRecipes.map((item) => {
             return <RecipeListItem key={item.id} item={item} />;
           })}

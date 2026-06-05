@@ -11,13 +11,11 @@ const Checkbox = ({ checked, onChange }) => {
   return (
     <div
       className={
-        checked
-          ? 'grocery-list__table-checkbox checked'
-          : 'grocery-list__table-checkbox'
+        checked ? 'grocery__table_checkbox checked' : 'grocery__table_checkbox'
       }
       onClick={onChange}
     >
-      {checked && <Check className="grocery-list__table-check" />}
+      {checked && <Check className="grocery__table__check" />}
     </div>
   );
 };
@@ -107,108 +105,109 @@ function GroceryList({ isOpen, closeActiveModal }) {
           Save a meal plan to generate a grocery list.
         </p>
       ) : (
-        <>
-          <p className="grocery-list__text-description">
-            View your Grocery List(s) based on specific meal plans you created.
-          </p>
+        savedPlans.map((plan) => {
+          const groceryList = planGroceryLists[plan.id] || [];
+          const isExpanded = expandedPlanId === plan.id;
 
-          {savedPlans.map((plan) => {
-            const groceryList = planGroceryLists[plan.id] || [];
-            const isExpanded = expandedPlanId === plan.id;
+          return (
+            <div className="grocery-list__container">
+              <p className="grocery-list__text-description">
+                View your Grocery List(s) based on specific meal plans you
+                created.
+              </p>
 
-            return (
-              <div className="grocery-list__container" key={plan.id}>
-                <div className="grocery-list__plan-section">
-                  <button
-                    className="grocery-list__plan-header"
-                    onClick={() => togglePlan(plan.id)}
-                  >
-                    <ChevronRight
-                      className={`grocery-list__plan-chevron ${isExpanded ? 'grocery-list__plan-chevron--open' : ''}`}
-                      size={18}
-                    />
-                    <span className="grocery-list__plan-name">
-                      {formatDateRange(plan.startDate, plan.endDate)}
-                    </span>
-                    <span className="grocery-list__plan-count">
-                      {plan.days.filter((d) => d.recipe).length} meals
-                    </span>
-                  </button>
+              <div key={plan.id} className="grocery-list__plan-section">
+                {/* Plan header — click to expand/collapse */}
 
-                  {isExpanded && (
-                    <div className="grocery-list__table-border">
-                      <div className="grocery-list__table">
-                        <div className="grocery-list__table-header grocery-list__table-row">
-                          <div className="grocery-list__table-check-col"></div>
-                          <div className="grocery-list__table-ingred-col">
-                            Ingredient
-                          </div>
-                          <div className="grocery-list__table-amount-col">
-                            Amount
-                          </div>
+                <button
+                  className="grocery-list__plan-header"
+                  onClick={() => togglePlan(plan.id)}
+                >
+                  <ChevronRight
+                    className={`grocery-list__plan-chevron ${isExpanded ? 'grocery-list__plan-chevron--open' : ''}`}
+                    size={18}
+                  />
+                  <span className="grocery-list__plan-name">
+                    {formatDateRange(plan.startDate, plan.endDate)}
+                  </span>
+                  <span className="grocery-list__plan-count">
+                    {plan.days.filter((d) => d.recipe).length} meals
+                  </span>
+                </button>
+
+                {/* Expanded grocery list table */}
+                {isExpanded && (
+                  <div className="grocery-list__table_border">
+                    <div className="grocery-list__table">
+                      <div className="grocery-list__table-header grocery__table-row">
+                        <div className="grocery-list__table_check-col"></div>
+                        <div className="grocery-list__table_ingred-col">
+                          Ingredient
                         </div>
-                        {groceryList.length === 0 ? (
-                          <p className="grocery-list__empty">
-                            No meals assigned in this plan.
-                          </p>
-                        ) : (
-                          groceryList.map(
-                            ({ ingredient, amount, checked }, index) => {
-                              const key = `${plan.id}-${index}`;
-                              return (
-                                <div
-                                  className="grocery-list__table-row"
-                                  key={key}
-                                >
-                                  <div className="grocery-list__table-check-col">
-                                    <Checkbox
-                                      checked={checked}
-                                      onChange={() =>
-                                        handleCheckboxChange(plan.id, index)
-                                      }
-                                    />
-                                  </div>
-                                  <div className="grocery-list__table-ingred-col">
-                                    {ingredient}
-                                  </div>
-                                  <div className="grocery-list__table-amount-col">
-                                    {editingKey === key ? (
-                                      <input
-                                        className="grocery-list__amount-input"
-                                        value={amount}
-                                        onChange={(e) =>
-                                          handleAmountChange(
-                                            plan.id,
-                                            index,
-                                            e.target.value
-                                          )
-                                        }
-                                        onBlur={() => setEditingKey(null)}
-                                        onKeyDown={(e) =>
-                                          e.key === 'Enter' &&
-                                          setEditingKey(null)
-                                        }
-                                        autoFocus
-                                      />
-                                    ) : (
-                                      <span onClick={() => setEditingKey(key)}>
-                                        {amount}
-                                      </span>
-                                    )}
-                                  </div>
-                                </div>
-                              );
-                            }
-                          )
-                        )}
+                        <div className="grocery-list__table_amount-col">
+                          Amount
+                        </div>
                       </div>
+                      {groceryList.length === 0 ? (
+                        <p className="grocery-list__empty">
+                          No meals assigned in this plan.
+                        </p>
+                      ) : (
+                        groceryList.map(
+                          ({ ingredient, amount, checked }, index) => {
+                            const key = `${plan.id}-${index}`;
+                            return (
+                              <div
+                                className="grocery-list__table-row"
+                                key={index}
+                              >
+                                <div className="grocery-list__table_check-col">
+                                  <Checkbox
+                                    checked={checked}
+                                    onChange={() =>
+                                      handleCheckboxChange(plan.id, index)
+                                    }
+                                  />
+                                </div>
+                                <div className="grocery-list__table_ingred-col">
+                                  {ingredient}
+                                </div>
+                                <div className="grocery-list__table_amount-col">
+                                  {editingKey === key ? (
+                                    <input
+                                      className="grocery-list__amount-input"
+                                      value={amount}
+                                      onChange={(e) =>
+                                        handleAmountChange(
+                                          plan.id,
+                                          index,
+                                          e.target.value
+                                        )
+                                      }
+                                      onBlur={() => setEditingKey(null)}
+                                      onKeyDown={(e) =>
+                                        e.key === 'Enter' && setEditingKey(null)
+                                      }
+                                      autoFocus
+                                    />
+                                  ) : (
+                                    <span onClick={() => setEditingKey(key)}>
+                                      {amount}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          }
+                        )
+                      )}
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
-            );
-          })}
-        </>
+            </div>
+          );
+        })
       )}
     </div>
   );
