@@ -1,8 +1,4 @@
-.preloader {
-  padding-top: 100px;
-}
-
-.circle-preloader {
+.presaver__cirlce {
   display: block;
   width: 100px;
   height: 100px;
@@ -38,7 +34,7 @@
   }
 }
 
-.presaver-text {
+.presaver__text {
   /* padding-top: 50px; */
   font-size: 18px;
   color: #444;

@@ -66,10 +66,10 @@ function LoginModal({ isOpen, closeActiveModal, onLogin, onSwitchToSignUp }) {
           <p className="loginModal__error">{errors.password}</p>
         )}
       </label>
-      <div className="LoginModal__bottom-btns">
+      <div className="loginModal__bottom-btns">
         <button
           type="submit"
-          className={`loginModal__submit ${isFormValid ? 'loginModal__submit_active' : ''}`}
+          className={`loginModal__submit ${isFormValid ? 'loginModal__submit--active' : ''}`}
           disabled={!isFormValid}
         >
           Login

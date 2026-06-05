@@ -124,120 +124,120 @@ function AddRecipeModal({ isOpen, closeActiveModal }) {
       title="Add Personal Recipe"
       isOpen={isOpen}
       closeActiveModal={handleCloseForm}
+      onSubmit={handleSubmit}
     >
       <p className="addRecipeModal__form-description">
         You may add personal recipes from other sources so that you can compile
         your comprehensive meal plan and grocery list. This recipe will show in
         your My Recipes collection.
       </p>
-      <form onSubmit={handleSubmit} className="addRecipeModal__form">
-        <div className="addRecipe__container">
-          <label
-            htmlFor="addRecipe-name"
-            className="addRecipeModal__label addRecipeModal__label_name"
-          >
-            Recipe Name
-            <input
-              id="addRecipe-name"
-              required
-              type="text"
-              placeholder=""
-              className="addRecipeModal__input"
-              onChange={(e) => setRecipeName(e.target.value)}
-              value={recipeName}
-            />
-          </label>
-          <label htmlFor="addRecipe-image" className="addRecipeModal__label">
-            Picture URL
-            <input
-              id="addRecipe-image"
-              required
-              type="text"
-              className="addRecipeModal__input"
-              onChange={(e) => setRecipeImage(e.target.value)}
-              value={recipeImage}
-            />
-          </label>
-          <label
-            htmlFor="addRecipe-description"
-            className="addRecipeModal__label addRecipeModal__label_description"
-          >
-            Description
-            <input
-              id="addRecipe-description"
-              required
-              type="text"
-              placeholder=""
-              className="addRecipeModal__input addRecipeModal__textarea_description"
-              value={recipeDescription}
-              onChange={(e) => setRecipeDescription(e.target.value)}
-            />
-          </label>
-          <label
-            htmlFor="addRecipe-ingredients"
-            className="addRecipeModal__label"
-          >
-            Ingredients
-            {recipeIngredients.map((ingredient, index) => (
-              <div key={index} className="addRecipe__row">
-                <input
-                  type="text"
-                  className="addRecipeModal__input"
-                  placeholder={`Ingredient ${index + 1}`}
-                  value={ingredient}
-                  onChange={(e) => updateIngredient(index, e.target.value)}
-                />
-                <Trash2
-                  className="addRecipe__remove"
-                  onClick={() => removeIngredient(index)}
-                />
-              </div>
-            ))}
-            <button
-              type="button"
-              className="addRecipe__add-button"
-              onClick={addIngredient}
-            >
-              <CirclePlus size={16} /> Add Ingredient
-            </button>
-          </label>
-          <label
-            htmlFor="addRecipe-instructions"
-            className="addRecipeModal__label"
-          >
-            Directions
-            {recipeDirections.map((direction, index) => (
-              <div key={index} className="addRecipe__row">
-                <input
-                  className="addRecipeModal__input"
-                  placeholder={`Step ${index + 1}`}
-                  value={direction}
-                  onChange={(e) => updateDirection(index, e.target.value)}
-                />
-                <Trash2
-                  className="addRecipe__remove"
-                  onClick={() => removeDirection(index)}
-                />
-              </div>
-            ))}
-            <button
-              type="button"
-              className="addRecipe__add-button"
-              onClick={addDirection}
-            >
-              <CirclePlus size={16} /> Add Step
-            </button>
-          </label>
 
+      <div className="addRecipe__container">
+        <label
+          htmlFor="addRecipe-name"
+          className="addRecipeModal__label addRecipeModal__label_name"
+        >
+          Recipe Name
+          <input
+            id="addRecipe-name"
+            required
+            type="text"
+            placeholder=""
+            className="addRecipeModal__input"
+            onChange={(e) => setRecipeName(e.target.value)}
+            value={recipeName}
+          />
+        </label>
+        <label htmlFor="addRecipe-image" className="addRecipeModal__label">
+          Picture URL
+          <input
+            id="addRecipe-image"
+            required
+            type="text"
+            className="addRecipeModal__input"
+            onChange={(e) => setRecipeImage(e.target.value)}
+            value={recipeImage}
+          />
+        </label>
+        <label
+          htmlFor="addRecipe-description"
+          className="addRecipeModal__label addRecipeModal__label_description"
+        >
+          Description
+          <input
+            id="addRecipe-description"
+            required
+            type="text"
+            placeholder=""
+            className="addRecipeModal__input addRecipeModal__textarea-description"
+            value={recipeDescription}
+            onChange={(e) => setRecipeDescription(e.target.value)}
+          />
+        </label>
+        <label
+          htmlFor="addRecipe-ingredients"
+          className="addRecipeModal__label"
+        >
+          Ingredients
+          {recipeIngredients.map((ingredient, index) => (
+            <div key={index} className="addRecipe__row">
+              <input
+                type="text"
+                className="addRecipeModal__input"
+                placeholder={`Ingredient ${index + 1}`}
+                value={ingredient}
+                onChange={(e) => updateIngredient(index, e.target.value)}
+              />
+              <Trash2
+                className="addRecipe__remove"
+                onClick={() => removeIngredient(index)}
+              />
+            </div>
+          ))}
           <button
-            type="submit"
-            className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit_active' : ''}`}
-            disabled={!isFormValid}
+            type="button"
+            className="addRecipe__add-button"
+            onClick={addIngredient}
           >
-            Add Recipe
+            <CirclePlus size={16} /> Add Ingredient
           </button>
-        </div>
-      </form>
+        </label>
+        <label
+          htmlFor="addRecipe-instructions"
+          className="addRecipeModal__label"
+        >
+          Directions
+          {recipeDirections.map((direction, index) => (
+            <div key={index} className="addRecipe__row">
+              <input
+                className="addRecipeModal__input"
+                placeholder={`Step ${index + 1}`}
+                value={direction}
+                onChange={(e) => updateDirection(index, e.target.value)}
+              />
+              <Trash2
+                className="addRecipe__remove"
+                onClick={() => removeDirection(index)}
+              />
+            </div>
+          ))}
+          <button
+            type="button"
+            className="addRecipe__add-button"
+            onClick={addDirection}
+          >
+            <CirclePlus size={16} /> Add Step
+          </button>
+        </label>
+
+        <button
+          type="submit"
+          className={`addRecipeModal__submit ${isFormValid ? 'addRecipeModal__submit--active' : ''}`}
+          disabled={!isFormValid}
+        >
+          Add Recipe
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

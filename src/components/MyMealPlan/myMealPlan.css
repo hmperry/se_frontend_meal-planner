@@ -3,32 +3,33 @@
   align-items: flex-start;
   gap: 0;
   width: 100%;
+  min-width: 0;
   min-height: 100%;
+
+  margin: 0 auto;
+  /* align-items: center; */
+  width: 80%;
+  flex: 1;
+  max-width: 1360px;
+  padding-bottom: 20px;
 }
 
 .mealPlan__title {
   margin: 0;
   padding: 15px 0 25px;
   text-align: left;
+  text-wrap: balance;
+}
+
+.mealPlan__mobile-break {
+  display: none;
 }
 
 .mealPlan__text-description {
   margin: 0;
   padding: 0 0 35px;
-  width: 70%;
+  width: 90%;
   text-align: left;
-}
-
-.mealPlan {
-  margin: 0 auto;
-  /* flex-direction: column; */
-  display: flex;
-  align-items: center;
-  width: 80%;
-  flex: 1;
-  min-width: 0;
-  max-width: 1360px;
-  padding-bottom: 20px;
 }
 
 .mealPlan__wrapper {
@@ -43,7 +44,7 @@
 .mealPlan__cards {
   padding-top: 0px;
   width: 70%;
-  min-width: 357px;
+  min-width: 200px;
   display: block;
   margin: 0 auto;
 }
@@ -94,54 +95,54 @@
   cursor: pointer;
 }
 
-.mealPlan__expanded_top-info {
+.mealPlan__expanded-top-info {
   display: flex;
   gap: 15px;
   padding-bottom: 15px;
 }
-.mealPlan__expanded_left-col {
+.mealPlan__expanded-left-col {
   width: 33%;
   flex-shrink: 0;
   min-width: 33%;
   /* overflow: hidden; */
 }
-.mealPlan__expanded_img-container {
+.mealPlan__expanded-img-container {
   width: 100%;
   flex-shrink: 0;
   min-width: 33%;
   overflow: hidden;
 }
-.mealPlan__expanded_image {
+.mealPlan__expanded-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.mealPlan__expanded_ingredients {
+.mealPlan__expanded-ingredients {
   font-size: 10pt;
   color: #5d625d;
   font-style: italic;
 }
 
-.mealPlan__expanded_instructions {
+.mealPlan__expanded-instructions {
   white-space: pre-wrap;
   margin: 0;
   padding: 0;
 }
 
-.mealPlan__expanded_heading {
+.mealPlan__expanded-heading {
   margin: 0;
   padding: 10px 0 15px;
   font-size: 18pt;
 }
 
-.mealPlan__expanded_subhead {
+.mealPlan__expanded-subhead {
   padding: 0;
   margin: 0;
 }
 
-.mealPlan__expanded_text-info {
+.mealPlan__expanded-text-info {
   display: flex;
   flex-direction: column;
   font-family: 'Inter';
@@ -150,7 +151,7 @@
   font-weight: 500;
 }
 
-.mealPlan__expanded_body {
+.mealPlan__expanded-body {
   display: flex;
 
   /* padding: 0 25px 15px; */
@@ -407,7 +408,47 @@
   margin: 12px 16px;
 }
 
+.mealPlan__sidebar-backdrop {
+  display: none;
+}
+
+.mealPlan__sidebar-close {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
+  .mealPlan__sidebar {
+    display: none;
+    position: fixed;
+    top: 120px; /* clears header + nav */
+    right: 0;
+    height: auto; /* CHANGE from 100% */
+    max-height: calc(100vh - 120px);
+    width: 260px;
+    z-index: 999;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .mealPlan__sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998; /* just below sidebar's 999 */
+  }
+
+  .mealPlan__sidebar-close {
+    display: flex;
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #444;
+    padding: 0 0 12px;
+  }
   .mealPlan__sidebar-toggle {
     display: flex;
   }
@@ -440,5 +481,16 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .mealPlan__save-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mealPlan__sidebar-toggle {
+    margin: 12px 0px;
   }
 }

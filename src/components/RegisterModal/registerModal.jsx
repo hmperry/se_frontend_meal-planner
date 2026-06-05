@@ -109,7 +109,7 @@ function RegisterModal({
       <div className="registerModal__bottom-btns">
         <button
           type="submit"
-          className={`registerModal__submit ${isFormValid ? 'registerModal__submit_active' : ''}`}
+          className={`registerModal__submit ${isFormValid ? 'registerModal__submit--active' : ''}`}
           disabled={!isFormValid}
         >
           Register

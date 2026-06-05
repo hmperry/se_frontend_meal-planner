@@ -47,11 +47,9 @@
 }
 
 .header__button:hover {
-  background: rgba(0, 154, 0, 0.5);
-  color: #111111;
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 0 6px rgba(0, 154, 0, 0.5);
 }
 
 .header__greeting {
@@ -108,7 +106,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 35px;
+    padding: 0 12px;
     border-radius: 6px;
     border: none;
     flex-shrink: 0;
